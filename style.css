@@ -403,7 +403,7 @@ h1 {
 }
 
 /* 会場リンク（ヘッダー） */
-.location-link {
+/* .location-link {
   color: white;
   background: rgba(255,255,255,0.06);
   padding: 6px 10px;
@@ -417,7 +417,7 @@ h1 {
   background: rgba(255,255,255,0.12);
   color: #fff;
   text-decoration: underline;
-}
+} */
 
 /* button風スタイル（ヘッダー用） */
 .btn-location {
