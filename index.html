@@ -143,11 +143,26 @@
     <h2>採点方式</h2>
 
     <div class="scoring-grid">
-      <article class="scoring-card">
+      <article class="scoring-card scoring-card-total">
         <div class="card-header"><h3>総合得点</h3></div>
         <div class="card-body">
-          <p class="formula">総合得点 = <strong>競技得点</strong> + <strong>初心者点</strong> + <strong>ナイス点</strong></p>
-          <p class="muted">一目で合計スコアの算出方法がわかるように表示しています。</p>
+          <div class="total-score-breakdown">
+            <div class="score-component">
+              <div class="component-label">競技得点</div>
+              <div class="component-desc">ウォール攻略<br>難易度別</div>
+            </div>
+            <div class="score-operator">+</div>
+            <div class="score-component">
+              <div class="component-label">初心者点</div>
+              <div class="component-desc">初級者へ<br>のボーナス</div>
+            </div>
+            <div class="score-operator">+</div>
+            <div class="score-component">
+              <div class="component-label">ナイス点</div>
+              <div class="component-desc">応援・励ましの<br>ボーナス</div>
+            </div>
+          </div>
+          <p class="formula-result">= <strong>チーム順位を決める総合得点</strong></p>
         </div>
       </article>
 
