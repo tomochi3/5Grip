@@ -377,6 +377,23 @@ h1 {
   color: var(--accent-dark);
 }
 
+/* 会場リンク（ヘッダー） */
+.location-link {
+  color: white;
+  background: rgba(255,255,255,0.06);
+  padding: 6px 10px;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: 700;
+}
+
+.location-link:hover {
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  text-decoration: underline;
+}
+
 main > .container {
   max-width: 100%;
 }
