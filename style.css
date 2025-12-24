@@ -804,4 +804,14 @@ h3 {
   .catch {
     font-size: 1rem;
   }
+
+  .total-score-breakdown {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .score-component {
+    padding: 8px;
+    font-size: 0.85rem;
+  }
 }
