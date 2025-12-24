@@ -13,7 +13,7 @@
   <div class="container">
     <div class="hero-badge">未経験者大歓迎</div>
     <h1>チーム制ボルダリング大会</h1>
-    <p class="catch">挑戦し、称え合い、楽しむ90分</p>
+    <p class="catch">挑戦し、称え合い、楽しむ</p>
     
     <div class="event-info">
       <div class="info-item">
@@ -112,33 +112,47 @@
   <section class="section">
     <h2>採点方式</h2>
 
-    <h3>総合得点</h3>
-    <p class="formula">総合得点 = 競技得点 + 初心者点 + ナイス点</p>
+    <div class="scoring-grid">
+      <article class="scoring-card">
+        <div class="card-header"><h3>総合得点</h3></div>
+        <div class="card-body">
+          <p class="formula">総合得点 = <strong>競技得点</strong> + <strong>初心者点</strong> + <strong>ナイス点</strong></p>
+          <p class="muted">一目で合計スコアの算出方法がわかるように表示しています。</p>
+        </div>
+      </article>
 
-    <h3>競技得点</h3>
-    <ul>
-      <li>最低難易度を1本完登するとポイント獲得</li>
-      <li>
-        初心者：10点 / 中級者：5点 / 上級者：0点
-      </li>
-      <li>難易度が1つ上がるごとに +5点</li>
-      <li>同一コースの2回目以降は0点</li>
-      <li>採点対象は最大10本まで</li>
-    </ul>
+      <article class="scoring-card">
+        <div class="card-header"><h3>競技得点</h3></div>
+        <div class="card-body">
+          <ul>
+            <li><strong>ベース：</strong>最低難易度を1本完登でポイント獲得</li>
+            <li><strong>ポイント配分：</strong>初心者：10点 / 中級者：5点 / 上級者：0点</li>
+            <li>難易度が1つ上がるごとに <span class="score-pill">+5点</span></li>
+            <li>同一コースの2回目以降は0点（採点対象最大10本）</li>
+          </ul>
+        </div>
+      </article>
 
-    <h3>初心者点</h3>
-    <ul>
-      <li>初心者：80点</li>
-      <li>中級者：40点</li>
-      <li>上級者：0点</li>
-    </ul>
-
-    <h3>ナイス点（1人最大100点）</h3>
-    <ul>
-      <li>チームメンバーが登れた時に「ナイスです！」：5点</li>
-      <li>フォール時に「ナイストライ！」：5点</li>
-      <li>全員満点を想定</li>
-    </ul>
+      <article class="scoring-card">
+        <div class="card-header"><h3>ボーナス / 初心者点・ナイス点</h3></div>
+        <div class="card-body">
+          <div class="bonus-grid">
+            <div class="bonus-item">
+              <div class="bonus-title">初心者点</div>
+              <div class="score-big">初心者：80点<br>中級者：40点<br>上級者：0点</div>
+            </div>
+            <div class="bonus-item">
+              <div class="bonus-title">ナイス点</div>
+              <div class="score-list">
+                <div>「ナイスです！」（登れた時）＝<strong>5点</strong></div>
+                <div>「ナイストライ！」（フォール時）＝<strong>5点</strong></div>
+                <div class="muted">（1人あたり最大100点）</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
   </section>
 
   </div>

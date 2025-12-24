@@ -221,7 +221,26 @@ h1 {
   animation: fadeInUp 0.6s ease-out both;
 }
 
-.section::before {
+.rules li:hover::before {
+  left: 100%;
+}
+
+.formula {
+  font-weight: 600;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(99, 102, 241, 0.05) 100%);
+  padding: 20px 24px;
+  border-left: 4px solid var(--accent);
+  border-radius: 8px;
+  color: var(--text-main);
+  font-size: 1.05rem;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.6s ease-out both;
+}
+
+.formula::after {
   content: '';
   position: absolute;
   top: 0;
@@ -233,27 +252,83 @@ h1 {
   pointer-events: none;
 }
 
-.section:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-4px);
-  border-color: rgba(59, 130, 246, 0.2);
-}
-
-.section:hover::before {
+.formula:hover::after {
   left: 100%;
 }
 
-.section-overview {
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(99, 102, 241, 0.05) 100%);
-  border: 1.5px solid rgba(59, 130, 246, 0.2);
+/* 採点方式用レイアウト */
+.scoring-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 20px;
 }
 
-.overview-content {
+.scoring-card {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(15, 23, 42, 0.04);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.scoring-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-xl);
+}
+
+.scoring-card .card-header h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.05rem;
+  color: var(--accent-dark);
+}
+
+.scoring-card .card-body {
+  font-size: 0.95rem;
+  color: var(--text-sub);
+}
+
+.score-pill {
+  display: inline-block;
+  padding: 4px 8px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
+  color: white;
+  border-radius: 999px;
+  font-weight: 700;
+  margin-left: 6px;
+  font-size: 0.9rem;
+}
+
+.bonus-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 48px;
+  gap: 12px;
 }
 
+.bonus-item .bonus-title {
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.score-big {
+  font-size: 1rem;
+  color: var(--text-main);
+  font-weight: 700;
+}
+
+.score-list div { margin-bottom: 6px; }
+
+.muted { color: var(--text-light); font-size: 0.9rem; }
+
+@media (max-width: 980px) {
+  .scoring-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .scoring-grid { grid-template-columns: 1fr; }
+}
 @media (max-width: 768px) {
   .overview-content {
     grid-template-columns: 1fr;
