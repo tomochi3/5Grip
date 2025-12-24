@@ -429,9 +429,15 @@ h1 {
   font-weight: 700;
   box-shadow: 0 6px 18px rgba(59,130,246,0.18);
   transition: transform 0.12s ease, box-shadow 0.12s ease;
+  color: white;
+  text-decoration: none;
 }
 
-.btn-location:hover { transform: translateY(-2px); box-shadow: var(--shadow-xl); }
+.btn-location:hover { 
+  transform: translateY(-2px); 
+  box-shadow: var(--shadow-xl); 
+  text-decoration: underline;
+}
 
 /* アクセス（マップ） */
 .section-access .access-grid {
