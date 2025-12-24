@@ -87,8 +87,50 @@ h1 {
   font-size: 1.25rem;
   font-weight: 500;
   color: #e2e8f0;
-  margin-bottom: 12px;
+  margin-bottom: 32px;
   letter-spacing: -0.3px;
+}
+
+.hero-badge {
+  display: inline-block;
+  background: rgba(34, 197, 94, 0.2);
+  color: #86efac;
+  padding: 8px 16px;
+  border-radius: 24px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  border: 1px solid rgba(34, 197, 94, 0.4);
+}
+
+.event-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-label {
+  font-size: 0.9rem;
+  color: #cbd5e1;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.info-value {
+  font-size: 1.3rem;
+  color: #ffffff;
+  font-weight: 600;
+  line-height: 1.4;
 }
 
 .meta {
@@ -108,6 +150,49 @@ h1 {
 
 .section:hover {
   box-shadow: var(--shadow-md);
+}
+
+.section-overview {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(59, 130, 246, 0.02) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.1);
+}
+
+.overview-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+}
+
+@media (max-width: 768px) {
+  .overview-content {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+.overview-item h3 {
+  margin-top: 0;
+  color: var(--accent);
+  font-size: 1.125rem;
+  margin-bottom: 12px;
+}
+
+.overview-item p {
+  color: var(--text-sub);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.overview-item a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.overview-item a:hover {
+  color: var(--accent-dark);
+  text-decoration: underline;
 }
 
 main > .container {
@@ -243,4 +328,20 @@ h3 {
   font-size: 0.9rem;
   color: var(--text-sub);
   text-align: center;
+}
+
+.footer a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: var(--accent-dark);
+  text-decoration: underline;
+}
+
+.footer p {
+  margin: 8px 0;
 }
