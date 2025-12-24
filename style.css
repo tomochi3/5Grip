@@ -1,0 +1,98 @@
+:root {
+  --text-main: #1a1a1a;
+  --text-sub: #666;
+  --border: #e5e7eb;
+  --accent: #0066cc;
+  --bg-light: #fafafa;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Hiragino Sans",
+    "Yu Gothic", "游ゴシック", sans-serif;
+  color: var(--text-main);
+  line-height: 1.75;
+  background: #fff;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.hero {
+  background: var(--bg-light);
+  border-bottom: 1px solid var(--border);
+}
+
+.hero .container {
+  padding: 72px 24px;
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 12px;
+}
+
+.catch {
+  font-size: 1.1rem;
+  color: var(--text-sub);
+}
+
+.meta {
+  color: var(--text-sub);
+}
+
+.section {
+  padding: 56px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.section:last-child {
+  border-bottom: none;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+h3 {
+  margin-top: 32px;
+  font-size: 1.1rem;
+}
+
+.flow {
+  padding-left: 20px;
+}
+
+.flow li {
+  margin-bottom: 20px;
+}
+
+.rules li {
+  margin-bottom: 8px;
+}
+
+.formula {
+  font-weight: 600;
+  background: var(--bg-light);
+  padding: 12px;
+  border-left: 4px solid var(--accent);
+}
+
+.footer {
+  border-top: 1px solid var(--border);
+  background: var(--bg-light);
+}
+
+.footer .container {
+  padding: 32px 24px;
+  font-size: 0.9rem;
+  color: var(--text-sub);
+}
