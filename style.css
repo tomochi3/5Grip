@@ -657,8 +657,8 @@ h3 {
 }
 
 /* Link top summary boxes to detail cards using :has() */
-.scoring-grid:has(.score-component[data-hover-target="competition-score"]:hover) #competition-score,
-.scoring-grid:has(.score-component[data-hover-target="bonus-score"]:hover) #bonus-score {
+#scoring .scoring-grid:has(.score-component[data-hover-target="competition-score"]:hover) #competition-score,
+#scoring .scoring-grid:has(.score-component[data-hover-target="bonus-score"]:hover) #bonus-score {
   border-color: var(--accent);
   background: linear-gradient(135deg, #ffffff 0%, rgba(59, 130, 246, 0.05) 100%);
   transform: translateY(-4px);
@@ -666,8 +666,8 @@ h3 {
 }
 
 /* When detail cards are hovered, highlight corresponding top summary boxes */
-.scoring-grid:has(#competition-score:hover) .score-component[data-hover-target="competition-score"],
-.scoring-grid:has(#bonus-score:hover) .score-component[data-hover-target="bonus-score"] {
+#scoring .scoring-grid:has(#competition-score:hover) .score-component[data-hover-target="competition-score"],
+#scoring .scoring-grid:has(#bonus-score:hover) .score-component[data-hover-target="bonus-score"] {
   border-color: var(--accent);
   background: rgba(59, 130, 246, 0.1);
   transform: translateY(-4px);
@@ -675,6 +675,38 @@ h3 {
 }
 
 .score-component { cursor: pointer; }
+
+/* Keyboard focus styles */
+.score-component:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+  border-color: var(--accent);
+  box-shadow: var(--shadow-md);
+}
+
+/* JS fallback / click-active states */
+.score-component.is-active,
+.scoring-card.is-active {
+  border-color: var(--accent);
+  background: linear-gradient(135deg, #ffffff 0%, rgba(59, 130, 246, 0.05) 100%);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Responsive form iframe height */
+.section-apply iframe {
+  width: 100%;
+  height: 70vh;
+  min-height: 560px;
+  max-height: 900px;
+}
+
+@media (max-width: 640px) {
+  .section-apply iframe {
+    height: 80vh;
+    min-height: 520px;
+  }
+}
 
 .component-label {
   font-weight: 700;
