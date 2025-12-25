@@ -29,9 +29,18 @@
   from {
     opacity: 0;
     transform: translateY(20px);
+  .container { padding: 0 12px; }
+  .section { padding: 20px; margin: 20px 0; }
+
+  /* 応募フォーム：スマホは余白を詰めて横幅を最大化 */
+  .section-apply { padding: 0; overflow: visible; }
+  .section-apply h2, .section-apply p { padding: 16px 16px 0; margin: 0; }
+  .section-apply iframe {
+    display: block;
+    width: calc(100% + 24px);
+    margin-left: -12px;
+    border-radius: 0;
   }
-  to {
-    opacity: 1;
     transform: translateY(0);
   }
 }
