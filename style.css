@@ -665,7 +665,9 @@ h3 {
   box-shadow: var(--shadow-md);
 }
 
-.scoring-card#competition-score:hover ~ .scoring-grid .score-component[data-hover-target="competition-score"] {
+/* When detail cards are hovered, highlight corresponding top summary boxes */
+.scoring-grid:has(#competition-score:hover) .score-component[data-hover-target="competition-score"],
+.scoring-grid:has(#bonus-score:hover) .score-component[data-hover-target="bonus-score"] {
   border-color: var(--accent);
   background: rgba(59, 130, 246, 0.1);
   transform: translateY(-4px);
