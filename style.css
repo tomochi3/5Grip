@@ -384,6 +384,27 @@ h1 {
   line-height: 1.6;
 }
 
+/* Visual grouping for overview: main info + separate videos block */
+.overview-content { display: block; }
+.overview-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+.overview-videos {
+  margin-top: 18px;
+  padding: 14px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(59,130,246,0.03) 0%, rgba(99,102,241,0.02) 100%);
+  border: 1px solid rgba(59,130,246,0.08);
+}
+.overview-videos .overview-item { margin: 0; }
+
+@media (max-width: 640px) {
+  .overview-group { grid-template-columns: 1fr; gap: 12px; }
+  .overview-videos { padding: 12px; margin-top: 12px; }
+}
+
 .overview-item a {
   color: var(--accent);
   text-decoration: none;
