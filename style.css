@@ -19,6 +19,7 @@
     opacity: 0;
     transform: translateY(-20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -29,18 +30,6 @@
   from {
     opacity: 0;
     transform: translateY(20px);
-  .container { padding: 0 12px; }
-  .section { padding: 20px; margin: 20px 0; }
-
-  /* 応募フォーム：スマホは余白を詰めて横幅を最大化 */
-  .section-apply { padding: 0; overflow: visible; }
-  .section-apply h2, .section-apply p { padding: 16px 16px 0; margin: 0; }
-  .section-apply iframe {
-    display: block;
-    width: calc(100% + 24px);
-    margin-left: -12px;
-    border-radius: 0;
-  }
     transform: translateY(0);
   }
 }
@@ -50,6 +39,7 @@
     opacity: 0;
     transform: translateX(-30px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -57,18 +47,24 @@
 }
 
 @keyframes pulse-glow {
-  0%, 100% {
+
+  0%,
+  100% {
     box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
   }
+
   50% {
     box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
   }
 }
 
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-10px);
   }
@@ -334,13 +330,20 @@ h1 {
   font-weight: 700;
 }
 
-.score-list div { margin-bottom: 6px; }
+.score-list div {
+  margin-bottom: 6px;
+}
 
-.muted { color: var(--text-light); font-size: 0.9rem; }
+.muted {
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
 
 @media (max-width: 980px) {
-  .scoring-grid { grid-template-columns: repeat(2, 1fr); }
-  
+  .scoring-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .scoring-card-total {
     grid-column: 1 / -1;
   }
@@ -352,7 +355,9 @@ h1 {
 }
 
 @media (max-width: 640px) {
-  .scoring-grid { grid-template-columns: 1fr; }
+  .scoring-grid {
+    grid-template-columns: 1fr;
+  }
 
   .scoring-card-total {
     grid-column: 1;
@@ -363,6 +368,7 @@ h1 {
     gap: 10px;
   }
 }
+
 @media (max-width: 768px) {
   .overview-content {
     grid-template-columns: 1fr;
@@ -385,24 +391,38 @@ h1 {
 }
 
 /* Visual grouping for overview: main info + separate videos block */
-.overview-content { display: block; }
+.overview-content {
+  display: block;
+}
+
 .overview-group {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 18px;
 }
+
 .overview-videos {
   margin-top: 18px;
   padding: 14px;
   border-radius: 10px;
-  background: linear-gradient(135deg, rgba(59,130,246,0.03) 0%, rgba(99,102,241,0.02) 100%);
-  border: 1px solid rgba(59,130,246,0.08);
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.03) 0%, rgba(99, 102, 241, 0.02) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.08);
 }
-.overview-videos .overview-item { margin: 0; }
+
+.overview-videos .overview-item {
+  margin: 0;
+}
 
 @media (max-width: 640px) {
-  .overview-group { grid-template-columns: 1fr; gap: 12px; }
-  .overview-videos { padding: 12px; margin-top: 12px; }
+  .overview-group {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .overview-videos {
+    padding: 12px;
+    margin-top: 12px;
+  }
 }
 
 .overview-item a {
@@ -457,15 +477,15 @@ h1 {
   padding: 10px 14px;
   border-radius: 10px;
   font-weight: 700;
-  box-shadow: 0 6px 18px rgba(59,130,246,0.18);
+  box-shadow: 0 6px 18px rgba(59, 130, 246, 0.18);
   transition: transform 0.12s ease, box-shadow 0.12s ease;
   color: white;
   text-decoration: none;
 }
 
-.btn-location:hover { 
-  transform: translateY(-2px); 
-  box-shadow: var(--shadow-xl); 
+.btn-location:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-xl);
   text-decoration: underline;
 }
 
@@ -485,13 +505,18 @@ h1 {
   box-shadow: var(--shadow-sm);
 }
 
-.section-access .access-info .address { font-weight: 700; color: var(--text-main); }
-
-@media (max-width: 980px) {
-  .section-access .access-grid { grid-template-columns: 1fr; }
+.section-access .access-info .address {
+  font-weight: 700;
+  color: var(--text-main);
 }
 
-main > .container {
+@media (max-width: 980px) {
+  .section-access .access-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+main>.container {
   max-width: 100%;
 }
 
@@ -551,14 +576,37 @@ h3 {
   animation: fadeInUp 0.6s ease-out both;
 }
 
-.flow li:nth-child(1) { animation-delay: 0.1s; }
-.flow li:nth-child(2) { animation-delay: 0.2s; }
-.flow li:nth-child(3) { animation-delay: 0.3s; }
-.flow li:nth-child(4) { animation-delay: 0.4s; }
-.flow li:nth-child(5) { animation-delay: 0.5s; }
-.flow li:nth-child(6) { animation-delay: 0.6s; }
-.flow li:nth-child(7) { animation-delay: 0.7s; }
-.flow li:nth-child(8) { animation-delay: 0.8s; }
+.flow li:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.flow li:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.flow li:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.flow li:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.flow li:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+.flow li:nth-child(6) {
+  animation-delay: 0.6s;
+}
+
+.flow li:nth-child(7) {
+  animation-delay: 0.7s;
+}
+
+.flow li:nth-child(8) {
+  animation-delay: 0.8s;
+}
 
 .flow li::before {
   content: counter(flow-counter);
@@ -635,10 +683,21 @@ h3 {
   transition: left 0.5s ease;
 }
 
-.rules li:nth-child(1) { animation-delay: 0.1s; }
-.rules li:nth-child(2) { animation-delay: 0.2s; }
-.rules li:nth-child(3) { animation-delay: 0.3s; }
-.rules li:nth-child(4) { animation-delay: 0.4s; }
+.rules li:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.rules li:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.rules li:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.rules li:nth-child(4) {
+  animation-delay: 0.4s;
+}
 
 .rules li:hover {
   box-shadow: var(--shadow-md);
@@ -704,7 +763,9 @@ h3 {
   box-shadow: var(--shadow-md);
 }
 
-.score-component { cursor: pointer; }
+.score-component {
+  cursor: pointer;
+}
 
 /* Keyboard focus styles */
 .score-component:focus-visible {
@@ -818,7 +879,7 @@ h3 {
 }
 
 /* spacing inside answers */
-.faq-item p br + br {
+.faq-item p br+br {
   content: "";
   display: block;
   margin-top: 6px;
@@ -972,5 +1033,35 @@ h3 {
   .score-component {
     padding: 8px;
     font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 12px;
+  }
+
+  .section {
+    padding: 20px;
+    margin: 20px 0;
+  }
+
+  /* 応募フォーム：スマホは余白を詰めて横幅を最大化 */
+  .section-apply {
+    padding: 0;
+    overflow: visible;
+  }
+
+  .section-apply h2,
+  .section-apply p {
+    padding: 16px 16px 0;
+    margin: 0;
+  }
+
+  .section-apply iframe {
+    display: block;
+    width: calc(100% + 24px);
+    margin-left: -12px;
+    border-radius: 0;
   }
 }
