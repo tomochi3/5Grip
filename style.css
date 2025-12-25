@@ -665,6 +665,13 @@ h3 {
   box-shadow: var(--shadow-md);
 }
 
+.scoring-card#competition-score:hover ~ .scoring-grid .score-component[data-hover-target="competition-score"] {
+  border-color: var(--accent);
+  background: rgba(59, 130, 246, 0.1);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
 .score-component { cursor: pointer; }
 
 .component-label {
