@@ -653,13 +653,16 @@ h3 {
 }
 
 .score-component:hover {
+  background: rgba(59, 130, 246, 0.1);
+}
+
+.score-component:hover[data-hover-target="competition-score"] ~ #competition-score {
   border-color: var(--accent);
-  background: linear-gradient(135deg, #ffffff 0%, rgba(59, 130, 246, 0.05) 100%);
+  background: rgba(59, 130, 246, 0.05);
   transform: translateY(-4px);
   box-shadow: var(--shadow-md);
 }
 
-/* Add hover effect for linked blocks */
 .score-component:hover ~ .scoring-card {
   border-color: var(--accent);
   background: linear-gradient(135deg, #ffffff 0%, rgba(59, 130, 246, 0.05) 100%);
