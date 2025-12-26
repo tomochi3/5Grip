@@ -1,94 +1,291 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const wallContainer = document.getElementById('wall-container');
-    const altitudeDisplay = document.getElementById('current-altitude');
-    const climber = document.getElementById('climber');
-    const checkpoints = document.querySelectorAll('.checkpoint');
+const canvas = document.getElementById('game-canvas');
+const ctx = canvas.getContext('2d');
+const scrollSpacer = document.getElementById('scroll-spacer');
+const scoreVal = document.getElementById('score-val');
+const deathVal = document.getElementById('death-val');
+const endScreen = document.getElementById('end-screen');
+const endTitle = document.getElementById('end-title');
+const endMsg = document.getElementById('end-msg');
+const retryBtn = document.getElementById('retry-btn');
+const hintOverlay = document.getElementById('hint-overlay');
 
-    // Generate random holds
-    const colors = ['#e94560', '#0f3460', '#533483', '#16213e'];
-    const holdCount = 100;
+// Game State
+let deaths = 0;
+let isGameOver = false;
+let isVictory = false;
 
-    for (let i = 0; i < holdCount; i++) {
-        const hold = document.createElement('div');
-        hold.classList.add('hold');
+// World Params
+const WORLD_HEIGHT = 10000; // Total pixels to scroll
+const METER_SCALE = 100; // 100px = 1m
+const GAME_HEIGHT = WORLD_HEIGHT / METER_SCALE; // 100m total
 
-        // Random position
-        const top = Math.random() * 100; // percent
-        const left = Math.random() * 90 + 5; // keep away from absolute edges
-        const size = Math.random() * 40 + 20; // 20px to 60px
-        const color = colors[Math.floor(Math.random() * colors.length)];
-        const rotation = Math.random() * 360;
+// Player
+const player = {
+    x: 0, // Set in resize
+    y: 0, // Starts at bottom (screen coords)
+    worldY: 0, // Current height in world (0 to WORLD_HEIGHT)
+    width: 30,
+    height: 30,
+    color: '#00d2ff',
+    trail: []
+};
 
-        hold.style.top = top + '%';
-        hold.style.left = left + '%';
-        hold.style.width = size + 'px';
-        hold.style.height = size + 'px';
-        hold.style.backgroundColor = color;
-        hold.style.transform = `rotate(${rotation}deg)`;
+// Obstacles
+let obstacles = [];
 
-        wallContainer.appendChild(hold);
+function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    player.x = canvas.width / 2;
+
+    // Ensure we can scroll exactly to WORLD_HEIGHT
+    // When scrollY = WORLD_HEIGHT, we want to be at the top.
+    // Total document height needs to be (WORLD_HEIGHT + ViewportHeight)
+    // Actually, max scrollY = (docHeight - viewportHeight).
+    // So if we want max scrollY == WORLD_HEIGHT, then:
+    // WORLD_HEIGHT = docHeight - viewportHeight
+    // docHeight = WORLD_HEIGHT + viewportHeight
+    scrollSpacer.style.height = (WORLD_HEIGHT + window.innerHeight) + 'px';
+}
+
+window.addEventListener('resize', resize);
+resize();
+
+function initObstacles() {
+    obstacles = [];
+    const count = 50;
+    // Start generating from 5m (500px) onwards
+    for (let i = 0; i < count; i++) {
+        const type = Math.random() > 0.5 ? 'bird' : 'rock';
+        const worldY = 500 + Math.random() * (WORLD_HEIGHT - 1000); // Spread across the climb
+        const width = type === 'bird' ? 40 : 50;
+        const height = type === 'bird' ? 20 : 50;
+
+        // Generate vertices for rock shape
+        const vertices = [];
+        if (type === 'rock') {
+            const numPoints = 8;
+            for (let j = 0; j < numPoints; j++) {
+                const angle = (j / numPoints) * Math.PI * 2;
+                const r = (Math.min(width, height) / 2) * (0.5 + Math.random() * 0.5);
+                vertices.push({
+                    x: Math.cos(angle) * r,
+                    y: Math.sin(angle) * r
+                });
+            }
+        }
+
+        obstacles.push({
+            type: type,
+            worldY: worldY,
+            x: Math.random() * canvas.width,
+            laneY: 0,
+            speed: (Math.random() + 0.5) * (Math.random() > 0.5 ? 2 : -2),
+            width: width,
+            height: height,
+            color: type === 'bird' ? '#ff4757' : '#ff6b6b', // Red-ish for dangerous rocks
+            vertices: vertices
+        });
+    }
+}
+
+initObstacles();
+
+// Main Loop
+function loop() {
+    if (isGameOver) return; // Stop updates
+
+    // 1. Update Input / Player Position
+    const scrollY = window.scrollY; // 0 at top
+    // Map scrollY to "Altitude"
+    // Let's say: 1px scroll = 1px altitude.
+    player.worldY = scrollY;
+
+    // Update Score
+    const altitudeMeters = Math.floor(player.worldY / METER_SCALE);
+    scoreVal.innerText = Math.min(altitudeMeters, 100);
+
+    if (scrollY > 100) hintOverlay.style.opacity = 0;
+
+    // Victory Check
+    if (altitudeMeters >= 100 && !isVictory) {
+        victory();
     }
 
-    // Set Checkpoint positions (absolute vertical positioning based on data-altitude)
-    // Map 0-100m to the container height
-    // We want 0m at the TOP of the scroll (start) and 100m at the BOTTOM?
-    // Wait, climbing implies going UP.
-    // Let's invert it: Scroll DOWN means climbing UP (moving visually through the wall).
-    // Or, we start at bottom and scroll up?
-    // Standard web is scroll down. Let's make Scroll Down = Climb Up the mountain visually
-    // Implementation: As we scroll down, the altitude meter goes UP.
+    // 2. Clear
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    const maxScroll = wallContainer.offsetHeight - window.innerHeight;
+    // 3. Draw Background Grid (Moving with visual)
+    ctx.save();
+    ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+    ctx.beginPath();
+    const gridOffset = player.worldY % 100;
+    for (let i = 0; i < canvas.height; i += 100) {
+        const y = i + gridOffset; // Move grid down as we go up? 
+        // If we climb UP (scrollY increase), the world should move DOWN.
+        // Wait, native scroll moves content UP.
+        // If I draw at `y - scrollY`, it moves up.
+    }
+    ctx.stroke();
+    ctx.restore();
 
-    // Position checkpoints relative to the wall height
-    checkpoints.forEach(cp => {
-        const alt = parseInt(cp.dataset.altitude);
-        // Map altitude: 0m = Top of page (start), 100m = Bottom of page (end)
-        // Wait, normally climbing starts at bottom. But web starts at top.
-        // Let's create a narrative: We are "descending" into the depth? No, The Ascent.
-        // Let's make the background move so it feels like we are moving up when we scroll down.
+    // 4. Update & Draw Obstacles
+    obstacles.forEach(obs => {
+        // Move Obstacle
+        obs.x += obs.speed;
 
-        // Simply: content is placed along the height.
-        // 0m check point is at the top (0% of container)
-        // 100m check point is at the bottom (100% of container)
-        const percent = alt / 100;
-        const topPos = percent * (wallContainer.offsetHeight - window.innerHeight); // adjust for viewport
+        // Wrap around screen
+        if (obs.x > canvas.width + 50) obs.x = -50;
+        if (obs.x < -50) obs.x = canvas.width + 50;
 
-        cp.style.top = topPos + 'px';
-    });
+        // Calculate Screen Y
+        // Object is at `obs.worldY`.
+        // Camera is at `player.worldY` (which is top of screen + offset?)
+        // Let's say player is centered.
+        // Actually, since we use native scroll, the canvas is FIXED to viewport.
+        // We need to render objects relative to scrollY.
+        // Object World Y = 2000. Player Scroll Y = 1900. Object should be 100px from top.
+        // ScreenY = obs.worldY - player.worldY + (canvas.height / 2)?
+        // NO. Native scroll feeling:
+        // Start (0) is top.
+        // As we scroll down (scrollY increases), "old" objects move UP and off screen.
+        // "New" objects come form bottom?
 
+        // Let's stick to the metaphor:
+        // Scroll 0 = Bottom of Mountain (Start).
+        // Scroll MAX = Top of Mountain.
+        // Screen Y of an object = (WorldHeight - obs.worldY) - (WorldHeight - scrollY - windowHeight)?
+        // Too complex.
 
-    window.addEventListener('scroll', () => {
-        const scrollY = window.scrollY;
-        const progress = Math.min(scrollY / maxScroll, 1);
+        // Simple View:
+        // Top of doc (scrollY=0) is Start.
+        // Bottom of doc is Finish.
+        // Object at worldY=100.
+        // If scrollY=0, object is at 100px from top of screen.
+        // If scrollY=50, object is at 50px from top of screen.
+        // ScreenY = obs.worldY - scrollY;
 
-        // Update Altitude Number
-        const altitude = Math.floor(progress * 100);
-        altitudeDisplay.textContent = altitude;
+        // Wait, obstacles are static vertically? Yes.
+        // They just move left/right.
 
-        // Move Climber slightly side-to-side based on scroll to simulate movement
-        const wobble = Math.sin(scrollY * 0.05) * 20; // 20px wobble
-        climber.style.transform = `translateX(calc(-50% + ${wobble}px))`;
+        const screenY = obs.worldY - scrollY + 200; // +200 offset so we start with some space
 
-        // Check active checkpoints
-        checkpoints.forEach(cp => {
-            const rect = cp.getBoundingClientRect();
-            // If element is roughly in center of screen
-            if (rect.top < window.innerHeight * 0.6 && rect.bottom > window.innerHeight * 0.4) {
-                cp.classList.add('active');
+        // Draw only if visible
+        if (screenY > -100 && screenY < canvas.height + 100) {
+            // Draw
+            ctx.fillStyle = obs.color;
+
+            if (obs.type === 'rock') {
+                // Draw Rock/Hold Shape
+                ctx.beginPath();
+                const cx = obs.x + obs.width / 2;
+                const cy = screenY + obs.height / 2;
+                if (obs.vertices && obs.vertices.length > 0) {
+                    ctx.moveTo(cx + obs.vertices[0].x, cy + obs.vertices[0].y);
+                    for (let j = 1; j < obs.vertices.length; j++) {
+                        ctx.lineTo(cx + obs.vertices[j].x, cy + obs.vertices[j].y);
+                    }
+                } else {
+                    ctx.rect(obs.x, screenY, obs.width, obs.height);
+                }
+                ctx.closePath();
+                ctx.fill();
+
+                // Add "depth" effect
+                ctx.strokeStyle = "rgba(0,0,0,0.3)";
+                ctx.lineWidth = 2;
+                ctx.stroke();
             } else {
-                cp.classList.remove('active');
+                // Draw Bird (Triangle)
+                ctx.beginPath();
+                ctx.moveTo(obs.x, screenY + obs.height / 2);
+                ctx.lineTo(obs.x + obs.width, screenY);
+                ctx.lineTo(obs.x + obs.width, screenY + obs.height);
+                ctx.closePath();
+                ctx.fill();
             }
-        });
 
-        // "Summit" effects at end
-        if (progress >= 0.99) {
-            altitudeDisplay.style.color = 'gold';
-        } else {
-            altitudeDisplay.style.color = '#e94560';
+            // Collision Check
+            // Player is fixed on screen?
+            // "Player" is the cursor of your progress.
+            // Let's visualize Player at a fixed point on screen (e.g. 20% from top? or center?)
+            // OR, Player IS the Scroll Viewport?
+            // The prompt says "Scroll to avoid".
+            // If I just scroll, I move the whole screen.
+            // If an obstacle hits the "Player", game over.
+            // Where is the Player?
+            // Let's put a "Climber" avatar fixed in the center of the screen.
+            // But if I scroll, the climber moves through the world.
+            // So Collision = (Object intersects Center of Screen).
+
+            const playerScreenX = canvas.width / 2 - 15;
+            const playerScreenY = canvas.height / 2 - 15; // Fixed at center
+
+            // Box Box collision
+            if (
+                obs.x < playerScreenX + 30 &&
+                obs.x + obs.width > playerScreenX &&
+                screenY < playerScreenY + 30 &&
+                screenY + obs.height > playerScreenY
+            ) {
+                gameOver();
+            }
         }
     });
 
-    // Trigger initial check
-    window.dispatchEvent(new Event('scroll'));
+    // 5. Draw Player (Fixed at Center)
+    const px = canvas.width / 2;
+    const py = canvas.height / 2;
+
+    // Trail
+    player.trail.push({ x: px, y: py + (Math.random() - 0.5) * 5 });
+    if (player.trail.length > 10) player.trail.shift();
+
+    ctx.fillStyle = '#00d2ff';
+    ctx.beginPath();
+    ctx.arc(px, py, 15, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Draw "Climbing Rope" or visual cue
+    ctx.strokeStyle = 'rgba(255,255,255,0.3)';
+    ctx.beginPath();
+    ctx.moveTo(px, py + 15);
+    ctx.lineTo(px, canvas.height);
+    ctx.stroke();
+
+    requestAnimationFrame(loop);
+}
+
+function gameOver() {
+    isGameOver = true;
+    deaths++;
+    deathVal.innerText = deaths;
+    endTitle.innerText = "CRUSHED";
+    endMsg.innerHTML = "Position: " + scoreVal.innerText + "m<br>Obstacles hit your rope.";
+    endScreen.classList.remove('hidden');
+    document.getElementById('home-btn-victory').style.display = 'none';
+}
+
+function victory() {
+    isVictory = true;
+    isGameOver = true;
+    endTitle.innerText = "SUMMIT!";
+    endTitle.style.color = "gold";
+    endTitle.style.textShadow = "0 0 20px gold";
+    endMsg.innerHTML = "You conquered the wall.<br>Deaths: " + deaths;
+    endScreen.classList.remove('hidden');
+    retryBtn.innerText = "CLIMB AGAIN";
+    document.getElementById('home-btn-victory').style.display = 'inline-block';
+}
+
+retryBtn.addEventListener('click', () => {
+    isGameOver = false;
+    isVictory = false;
+    endScreen.classList.add('hidden');
+    window.scrollTo(0, 0); // Reset scroll
+    initObstacles(); // New random seed
+    loop();
 });
+
+// Start
+loop();
