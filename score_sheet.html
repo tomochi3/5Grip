@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>チーム制ボルダリング交流会 - 採点表</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 10mm;
+        }
+
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            width: 190mm;
+            /* A4 width (210mm) - margins */
+            margin: 0 auto;
+            color: #333;
+            font-size: 11pt;
+            line-height: 1.4;
+        }
+
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #333;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 20pt;
+            margin: 0 0 10px 0;
+        }
+
+        .meta-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12pt;
+        }
+
+        .section {
+            margin-bottom: 25px;
+            border: 1px solid #999;
+            padding: 15px;
+            border-radius: 4px;
+        }
+
+        .section h2 {
+            margin-top: 0;
+            background: #eee;
+            padding: 5px 10px;
+            border-bottom: 1px solid #999;
+            font-size: 14pt;
+        }
+
+        .grid-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .col-half {
+            flex: 1;
+        }
+
+        /* Input areas */
+        .input-group {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-label {
+            width: 100px;
+            font-weight: bold;
+        }
+
+        .input-box {
+            border: 1px solid #333;
+            height: 30px;
+            flex: 1;
+            background: #fdfdfd;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th,
+        td {
+            border: 1px solid #999;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background: #f5f5f5;
+        }
+
+        /* Scoring Specifics */
+        .score-check {
+            width: 20px;
+            height: 20px;
+            border: 1px solid #333;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+
+        .nice-point-grid {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .nice-box {
+            border: 1px solid #333;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 9pt;
+            color: #999;
+        }
+
+        .total-calculation {
+            font-size: 14pt;
+            font-weight: bold;
+            text-align: right;
+            padding: 15px;
+            background: #f9f9f9;
+            border: 2px solid #333;
+            margin-top: 10px;
+        }
+
+        .calc-row {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .calc-box {
+            border-bottom: 2px solid #333;
+            width: 80px;
+            display: inline-block;
+            text-align: center;
+            margin: 0 10px;
+            height: 30px;
+            line-height: 30px;
+        }
+
+        .rules-summary {
+            font-size: 9pt;
+            color: #666;
+            border-top: 1px solid #ccc;
+            padding-top: 10px;
+        }
+
+        .rules-summary ul {
+            margin: 5px 0;
+            padding-left: 20px;
+        }
+
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>チーム制ボルダリング交流会 採点票</h1>
+        <div class="meta-info">
+            <span>開催日: 2026年2月7日(土)</span>
+            <span>会場: BETA CLIMBING</span>
+        </div>
+    </div>
+
+    <div class="grid-row">
+        <div class="col-half">
+            <div class="input-group">
+                <span class="input-label">チーム番号</span>
+                <div class="input-box"></div>
+            </div>
+            <div class="input-group">
+                <span class="input-label">チーム名</span>
+                <div class="input-box"></div>
+            </div>
+        </div>
+        <div class="col-half">
+            <div class="input-group">
+                <span class="input-label">参加者名</span>
+                <div class="input-box"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Competition Score -->
+    <div class="section">
+        <h2>1. 競技得点</h2>
+        <p style="font-size:9pt; margin:5px 0;">※最低グレードの課題を1本完登すると得点が認められます（完登なしは0点）。同一課題は2回目以降0点。</p>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width:10%">No.</th>
+                    <th style="width:30%">グレード</th>
+                    <th style="width:20%">完登チェック</th>
+                    <th style="width:20%">基本点</th>
+                    <th style="width:20%">獲得点数</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>
+                        <div class="input-box" style="border:none; border-bottom:1px solid #ccc;"></div>
+                    </td>
+                    <td>
+                        <div class="score-check"></div>
+                    </td>
+                    <td><span style="color:#999">基準点</span></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>
+                        <div class="input-box" style="border:none; border-bottom:1px solid #ccc;"></div>
+                    </td>
+                    <td>
+                        <div class="score-check"></div>
+                    </td>
+                    <td>+ 5</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>
+                        <div class="input-box" style="border:none; border-bottom:1px solid #ccc;"></div>
+                    </td>
+                    <td>
+                        <div class="score-check"></div>
+                    </td>
+                    <td>+ 10</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>
+                        <div class="input-box" style="border:none; border-bottom:1px solid #ccc;"></div>
+                    </td>
+                    <td>
+                        <div class="score-check"></div>
+                    </td>
+                    <td>+ 15</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>
+                        <div class="input-box" style="border:none; border-bottom:1px solid #ccc;"></div>
+                    </td>
+                    <td>
+                        <div class="score-check"></div>
+                    </td>
+                    <td>+ 20</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>
+                        <div class="input-box" style="border:none; border-bottom:1px solid #ccc;"></div>
+                    </td>
+                    <td>
+                        <div class="score-check"></div>
+                    </td>
+                    <td>+ 25</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>
+                        <div class="input-box" style="border:none; border-bottom:1px solid #ccc;"></div>
+                    </td>
+                    <td>
+                        <div class="score-check"></div>
+                    </td>
+                    <td>+ 30</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>
+                        <div class="input-box" style="border:none; border-bottom:1px solid #ccc;"></div>
+                    </td>
+                    <td>
+                        <div class="score-check"></div>
+                    </td>
+                    <td>+ 35</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>
+                        <div class="input-box" style="border:none; border-bottom:1px solid #ccc;"></div>
+                    </td>
+                    <td>
+                        <div class="score-check"></div>
+                    </td>
+                    <td>+ 40</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>
+                        <div class="input-box" style="border:none; border-bottom:1px solid #ccc;"></div>
+                    </td>
+                    <td>
+                        <div class="score-check"></div>
+                    </td>
+                    <td>+ 45</td>
+                    <td></td>
+                </tr>
+                <tr style="background:#f9f9f9; font-weight:bold;">
+                    <td colspan="4" style="text-align:right">競技得点 合計 (A)</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="font-size:9pt; margin-top:5px;">
+            <strong>基準点:</strong> 初心者 10点 / 中級者 5点 / 上級者 0点 (※ 経験に応じて変動あり)
+        </div>
+    </div>
+
+    <div class="grid-row">
+        <!-- Beginner Bonus -->
+        <div class="col-half section">
+            <h2>2. 初心者点 (B)</h2>
+            <p style="font-size:10pt;">該当する区分にチェックを入れてください。</p>
+            <div style="margin-top:15px; font-size:12pt; line-height:2;">
+                <div>
+                    <div class="score-check"></div> 初心者 (80点)
+                </div>
+                <div>
+                    <div class="score-check"></div> 中級者 (40点)
+                </div>
+                <div>
+                    <div class="score-check"></div> 上級者 (0点)
+                </div>
+            </div>
+        </div>
+
+        <!-- Nice Bonus -->
+        <div class="col-half section">
+            <h2>3. ナイス点 (C)</h2>
+            <p style="font-size:9pt;">「ナイスです！(完登)」「ナイストライ！(失敗)」と言ったら1回チェック (+5点)</p>
+            <div class="nice-point-grid">
+                <div class="nice-box">5</div>
+                <div class="nice-box">5</div>
+                <div class="nice-box">5</div>
+                <div class="nice-box">5</div>
+                <div class="nice-box">5</div>
+                <div class="nice-box">5</div>
+                <div class="nice-box">5</div>
+                <div class="nice-box">5</div>
+                <div class="nice-box">5</div>
+                <div class="nice-box">5</div>
+                <div class="nice-box">5</div>
+                <div class="nice-box">5</div>
+                <div class="nice-box">5</div>
+                <div class="nice-box">5</div>
+                <div class="nice-box">5</div>
+                <div class="nice-box">5</div>
+                <div class="nice-box">5</div>
+                <div class="nice-box">5</div>
+                <div class="nice-box">5</div>
+                <div class="nice-box">5</div>
+            </div>
+            <div style="text-align:right; margin-top:10px; font-weight:bold;">
+                合計 (Max 100): _______ 点
+            </div>
+        </div>
+    </div>
+
+    <!-- Total Calculation -->
+    <div class="total-calculation">
+        <div class="calc-row">
+            (A) 競技 <span class="calc-box"></span> +
+            (B) 初心者 <span class="calc-box"></span> +
+            (C) ナイス <span class="calc-box"></span>
+        </div>
+        <div class="calc-row" style="margin-top:15px; font-size:18pt;">
+            = 総合得点 <span class="calc-box" style="width:120px;"></span> 点
+        </div>
+    </div>
+
+    <div class="rules-summary">
+        <strong>【ルール要約】</strong>
+        <ul>
+            <li>競技得点: 自分のレベルに合った課題を10本まで選んでトライ。難易度が上がるごとに+5点加算。</li>
+            <li>ナイス点: チームメイトや他チームへの応援で加点。最大100点まで。</li>
+            <li>交流会ルール: フォールは10秒以内なら2回まで即再トライ可。その後は交代。</li>
+        </ul>
+    </div>
+
+</body>
+
+</html>
