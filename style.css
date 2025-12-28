@@ -489,6 +489,34 @@ h1 {
   text-decoration: underline;
 }
 
+/* Score sheet button */
+.btn-score-sheet {
+  display: inline-block;
+  background: #4CAF50;
+  color: #fff !important;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 0.7em;
+  margin-left: 15px;
+  vertical-align: middle;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease, transform 0.2s ease;
+  /* Override h2 gradient text effect */
+  -webkit-background-clip: border-box !important;
+  -webkit-text-fill-color: #fff !important;
+  background-clip: border-box !important;
+}
+
+.btn-score-sheet:hover {
+  background: #45a049;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
 /* アクセス（マップ） */
 .section-access .access-grid {
   display: grid;
