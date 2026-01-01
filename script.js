@@ -51,4 +51,23 @@ document.addEventListener('DOMContentLoaded', () => {
             card.addEventListener('mouseleave', clearActive);
         });
     }
+
+    // Scroll to Bottom Button Logic
+    const scrollBtn = document.getElementById('scrollToBottomBtn');
+    if (scrollBtn) {
+        scrollBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: document.body.scrollHeight,
+                behavior: 'smooth'
+            });
+            
+            // Fade out the button
+            scrollBtn.classList.add('is-hidden');
+            
+            // Remove from DOM after transition
+            setTimeout(() => {
+                scrollBtn.style.display = 'none';
+            }, 400);
+        });
+    }
 });
