@@ -56,10 +56,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const scrollBtn = document.getElementById('scrollToBottomBtn');
     if (scrollBtn) {
         scrollBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: document.body.scrollHeight,
-                behavior: 'smooth'
-            });
+            const applySection = document.getElementById('apply-section');
+            if (applySection) {
+                applySection.scrollIntoView({ behavior: 'smooth' });
+            }
             
             // Fade out the button
             scrollBtn.classList.add('is-hidden');
