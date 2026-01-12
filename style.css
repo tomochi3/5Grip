@@ -1359,3 +1359,28 @@ h3 {
   content: '▶';
   font-size: 0.7rem;
 }
+/* SURREAL HOVER EFFECT (Elegant & Floating) */
+@keyframes surreal-float {
+  0% { transform: translateY(0) scale(1) rotate(0deg); box-shadow: 0 5px 15px rgba(230,0,18,0.3); }
+  50% { transform: translateY(-10px) scale(1.05) rotate(1deg); box-shadow: 0 25px 30px rgba(255, 215, 0, 0.4); }
+  100% { transform: translateY(0) scale(1) rotate(0deg); box-shadow: 0 5px 15px rgba(230,0,18,0.3); }
+}
+
+@keyframes surreal-glow {
+  0% { background-color: #e60012; }
+  50% { background-color: #ff4d4d; }
+  100% { background-color: #e60012; }
+}
+
+.crazy-hover {
+  transition: all 0.5s ease;
+  z-index: 100;
+  transform-style: preserve-3d;
+}
+
+.crazy-hover:hover {
+  animation: surreal-float 4s ease-in-out infinite, surreal-glow 4s ease-in-out infinite;
+  /* Make the text feel almost spiritual */
+  letter-spacing: 2px;
+}
+
