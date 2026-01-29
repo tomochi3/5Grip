@@ -4,207 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <title>チーム制ボルダリング交流会 - 採点表</title>
-    <style>
-        @page {
-            size: A4;
-            margin: 6mm;
-        }
-
-        body {
-            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-            width: 198mm;
-            margin: 0 auto;
-            color: #333;
-            font-size: 9.5pt;
-            /* Reduced from 10pt */
-            line-height: 1.2;
-            /* Reduced from 1.25 */
-            zoom: 0.93;
-        }
-
-        .header {
-            text-align: center;
-            border-bottom: 2px solid #333;
-            padding-bottom: 3px;
-            /* Reduced */
-            margin-bottom: 5px;
-            /* Reduced */
-        }
-
-        h1 {
-            font-size: 15pt;
-            /* Reduced */
-            margin: 0 0 3px 0;
-        }
-
-        .meta-info {
-            display: flex;
-            justify-content: space-between;
-            font-size: 9pt;
-        }
-
-        .section {
-            margin-bottom: 5px;
-            /* Reduced */
-            border: 1px solid #999;
-            padding: 5px;
-            /* Reduced */
-            border-radius: 4px;
-        }
-
-        .section h2 {
-            margin-top: 0;
-            background: #eee;
-            padding: 2px 5px;
-            /* Reduced */
-            border-bottom: 1px solid #999;
-            font-size: 11pt;
-            /* Reduced */
-        }
-
-        .grid-row {
-            display: flex;
-            justify-content: space-between;
-            gap: 8px;
-            /* Reduced */
-        }
-
-        .col-half {
-            flex: 1;
-        }
-
-        /* Input areas */
-        .input-group {
-            margin-bottom: 3px;
-            /* Reduced */
-            display: flex;
-            align-items: center;
-        }
-
-        .input-label {
-            width: 80px;
-            /* Adjusted */
-            font-weight: bold;
-            font-size: 9pt;
-        }
-
-        .input-box {
-            border: 1px solid #333;
-            height: 22px;
-            /* Reduced */
-            flex: 1;
-            background: #fdfdfd;
-        }
-
-        /* Tables */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 3px;
-            /* Reduced */
-        }
-
-        th,
-        td {
-            border: 1px solid #999;
-            padding: 2px 4px;
-            /* Reduced padding */
-            text-align: center;
-            font-size: 9pt;
-            /* Explicitly set small */
-        }
-
-        th {
-            background: #f5f5f5;
-        }
-
-        /* Scoring Specifics */
-        .score-check {
-            width: 14px;
-            /* Reduced */
-            height: 14px;
-            /* Reduced */
-            border: 1px solid #333;
-            display: inline-block;
-            vertical-align: middle;
-            margin-right: 4px;
-        }
-
-        .nice-point-grid {
-            display: grid;
-            grid-template-columns: repeat(10, 1fr);
-            gap: 2px;
-            /* Reduced */
-            margin-top: 3px;
-        }
-
-        .nice-box {
-            border: 1px solid #333;
-            height: 25px;
-            /* Reduced */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 8pt;
-            color: #999;
-        }
-
-        .total-calculation {
-            font-size: 12pt;
-            font-weight: bold;
-            text-align: right;
-            padding: 5px;
-            background: #f9f9f9;
-            border: 2px solid #333;
-            margin-top: 5px;
-        }
-
-        .calc-row {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            margin-bottom: 2px;
-        }
-
-        .calc-box {
-            border-bottom: 2px solid #333;
-            width: 80px;
-            display: inline-block;
-            text-align: center;
-            margin: 0 10px;
-            height: 30px;
-            line-height: 30px;
-        }
-
-        .rules-summary {
-            font-size: 9pt;
-            color: #666;
-            border-top: 1px solid #ccc;
-            padding-top: 10px;
-        }
-
-        .rules-summary ul {
-            margin: 5px 0;
-            padding-left: 20px;
-        }
-
-        @media print {
-            body {
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="score_sheet.css">
 </head>
 
 <body>
 
     <div class="header">
         <h1>チーム制ボルダリング交流会 採点票</h1>
-        <div class="meta-info">
-            <span>開催日: 2026年2月7日(土)</span>
-            <span>会場: BETA CLIMBING</span>
-        </div>
+        <h2>チーム番号：____（来場されたら同じチーム番号の方をお探しください）</h2>
     </div>
 
     <div class="grid-row">
@@ -233,107 +40,107 @@
     <!-- Competition Score -->
     <div class="section">
         <h2>1. 競技得点</h2>
-        <p style="font-size:9pt; margin:5px 0;">
+        <p class="font-9pt margin-5-0">
             各グレードの登れた課題数をメモしてください。<strong>上位10本</strong>の合計得点を算出して(A)に記入します。<br>
             ※同一課題の再登は得点になりませんが、同じグレードでも別の課題なら加算対象です。
         </p>
         <table>
             <thead>
                 <tr>
-                    <th style="width:15%">グレード</th>
-                    <th style="width:10%">得点</th>
-                    <th style="width:60%">完登数（正の字などで登った数がわかるようにメモしてください）</th>
-                    <th style="width:15%">小計<br>（最後に算出）</th>
+                    <th class="col-grade">グレード</th>
+                    <th class="col-points">得点</th>
+                    <th class="col-count">完登数（正の字などで登った数がわかるようにメモしてください）</th>
+                    <th class="col-subtotal">小計<br>（最後に算出）</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td style="font-weight:bold;">8級</td>
+                    <td class="bold">8級</td>
                     <td>基準点</td>
                     <td>
-                        <div class="input-box" style="border:none; "></div>
+                        <div class="input-box no-border"></div>
                     </td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td style="font-weight:bold;">7級</td>
+                    <td class="bold">7級</td>
                     <td>基準点<br>+ 5点</td>
                     <td>
-                        <div class="input-box" style="border:none; "></div>
+                        <div class="input-box no-border"></div>
                     </td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td style="font-weight:bold;">6級</td>
+                    <td class="bold">6級</td>
                     <td>基準点<br>+ 10点</td>
                     <td>
-                        <div class="input-box" style="border:none; "></div>
+                        <div class="input-box no-border"></div>
                     </td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td style="font-weight:bold;">5級</td>
+                    <td class="bold">5級</td>
                     <td>基準点<br>+ 15点</td>
                     <td>
-                        <div class="input-box" style="border:none; "></div>
+                        <div class="input-box no-border"></div>
                     </td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td style="font-weight:bold;">4級</td>
+                    <td class="bold">4級</td>
                     <td>基準点<br>+ 20点</td>
                     <td>
-                        <div class="input-box" style="border:none; "></div>
+                        <div class="input-box no-border"></div>
                     </td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td style="font-weight:bold;">3級</td>
+                    <td class="bold">3級</td>
                     <td>基準点<br>+ 25点</td>
                     <td>
-                        <div class="input-box" style="border:none; "></div>
+                        <div class="input-box no-border"></div>
                     </td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td style="font-weight:bold;">2級</td>
+                    <td class="bold">2級</td>
                     <td>基準点<br>+ 30点</td>
                     <td>
-                        <div class="input-box" style="border:none; "></div>
+                        <div class="input-box no-border"></div>
                     </td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td style="font-weight:bold;">1級</td>
+                    <td class="bold">1級</td>
                     <td>基準点<br>+ 35点</td>
                     <td>
-                        <div class="input-box" style="border:none; "></div>
+                        <div class="input-box no-border"></div>
                     </td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td style="font-weight:bold;">初段</td>
+                    <td class="bold">初段</td>
                     <td>基準点<br>+ 40点</td>
                     <td>
-                        <div class="input-box" style="border:none; "></div>
+                        <div class="input-box no-border"></div>
                     </td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td style="font-weight:bold;">2段</td>
+                    <td class="bold">2段</td>
                     <td>基準点<br>+ 45点</td>
                     <td>
-                        <div class="input-box" style="border:none; "></div>
+                        <div class="input-box no-border"></div>
                     </td>
                     <td></td>
                 </tr>
-                <tr style="background:#f9f9f9; font-weight:bold;">
-                    <td colspan="3" style="text-align:right">上位10本の合計点 (A)</td>
+                <tr class="total-row">
+                    <td colspan="3" class="text-right">上位10本の合計点 (A)</td>
                     <td></td>
                 </tr>
             </tbody>
         </table>
-        <div style="font-size:9pt; margin-top:5px;">
+        <div class="font-9pt mt-5">
             <strong>基準点:</strong> 初心者 10点 / 中級者 5点 / 上級者 -20(マイナス20)~0点
         </div>
     </div>
@@ -342,8 +149,8 @@
         <!-- Beginner Bonus -->
         <div class="col-half section">
             <h2>2. 初心者点 (B)</h2>
-            <p style="font-size:10pt;">該当する区分にチェックを入れてください。</p>
-            <div style="margin-top:15px; font-size:12pt; line-height:2;">
+            <p class="font-10pt">該当する区分にチェックを入れてください。</p>
+            <div class="mt-15 font-12pt line-height-2">
                 <div>
                     <div class="score-check"></div> 初心者 (80点)
                 </div>
@@ -359,7 +166,7 @@
         <!-- Nice Bonus -->
         <div class="col-half section">
             <h2>3. ナイス点 (C)</h2>
-            <p style="font-size:9pt;">「ナイスです！」「ナイストライ！」と言ったら1回チェック (+5点)</p>
+            <p class="font-9pt">「ナイスです！」「ナイストライ！」と言ったら1回チェック (+5点)</p>
             <div class="nice-point-grid">
                 <div class="nice-box">5</div>
                 <div class="nice-box">5</div>
@@ -382,14 +189,14 @@
                 <div class="nice-box">5</div>
                 <div class="nice-box">5</div>
             </div>
-            <div style="text-align:right; margin-top:10px; font-weight:bold;">
+            <div class="text-right mt-10 bold">
                 合計 (Max 100): _______ 点
             </div>
             <!-- Sponsor Logo -->
-            <div style="text-align:center; margin-top:15px; padding-top:10px; border-top:1px solid #ddd;">
-                <p style="font-size:8pt; color:#999; margin-bottom:5px;">協賛</p>
+            <div class="sponsor-container">
+                <p class="sponsor-label">協賛</p>
                 <img src="https://buddy-training.com/wp-content/themes/thegym/lp__images/2407/lp__logo.svg" alt="バディトレ"
-                    style="max-width:100px; height:auto;" loading="lazy">
+                    class="sponsor-logo" loading="lazy">
             </div>
         </div>
     </div>
@@ -401,8 +208,8 @@
             (B) 初心者 <span class="calc-box"></span> +
             (C) ナイス <span class="calc-box"></span>
         </div>
-        <div class="calc-row" style="margin-top:15px; font-size:18pt;">
-            = 総合得点 <span class="calc-box" style="width:120px;"></span> 点
+        <div class="calc-row large">
+            = 総合得点 <span class="calc-box wide"></span> 点
         </div>
     </div>
 
@@ -416,72 +223,85 @@
     </div>
 
     <!-- Page Break for Back Side -->
-    <div
-        style="page-break-before: always; margin-top: 40px; padding: 20px 0; text-align: center; border-top: 3px dashed #333; border-bottom: 3px dashed #333;">
-        <p style="font-size: 14pt; font-weight: bold; margin: 10px 0; color: #333;">
+    <!-- <div class="page-break">
+        <p class="page-break-title">
             ━━━━━ ✂ ここから裏面 (Page 2) ✂ ━━━━━
         </p>
-        <p style="font-size: 9pt; color: #666; margin: 5px 0;">
+        <p class="page-break-note">
             印刷時は自動的に改ページされます
         </p>
-    </div>
+    </div> -->
 
     <div class="header">
-        <h1>当日のご案内・注意事項</h1>
-        <p style="text-align:center; font-size:10pt;">(チーム制ボルダリング交流会 2026/2/7)</p>
+        <h1>当日のご案内・注意事項（裏面）</h1>
     </div>
 
     <!-- Compact content for upper half of back page -->
-    <div style="font-size:9pt;">
-        <div class="section" style="margin-bottom:15px; padding:10px;">
-            <h2 style="font-size:12pt;">当日の流れ</h2>
-            <table style="width:100%; border:none; font-size:9pt;">
-                <tr style="border:none;">
-                    <td style="border:none; text-align:left; width:60px; font-weight:bold;">9:00</td>
-                    <td style="border:none; text-align:left;">受付開始・準備（動きやすい服装で来場）</td>
+    <div class="back-page-content">
+        <div class="section back-page-section">
+            <h2 class="back-page-title">当日の流れ</h2>
+            <table class="schedule-table">
+                <tr>
+                    <td class="time-cell">9:00
+                    </td>
+                    <td>受付開始・準備<br>
+                        <span class="schedule-detail">名札・点数表（この紙）・ペン（1チーム1本）を受け取って、チームごとに集合してください！</span>
+                    </td>
                 </tr>
-                <tr style="border:none;">
-                    <td style="border:none; text-align:left; font-weight:bold;">9:15</td>
-                    <td style="border:none; text-align:left;">ルール説明</td>
+                <tr>
+                    <td class="time-cell">9:15</td>
+                    <td>共通点探しゲーム（チーム名決め）（10分）<br>
+                        <span
+                            class="schedule-detail">1人30秒x2回（こちらで測ります）、自分の特徴（職種、趣味、好きなこと等）を単語の羅列でいいので言いまくる→共通点を見つけてチーム名を決定してください！</span>
+                    </td>
                 </tr>
-                <tr style="border:none;">
-                    <td style="border:none; text-align:left; font-weight:bold;">9:30</td>
-                    <td style="border:none; text-align:left;">ボルダリング開始（約110分）</td>
+                <tr>
+                    <td class="time-cell">9:30</td>
+                    <td>ルール説明<br>
+                        <span class="schedule-detail">下記の「注意事項・安全管理」もご一読ください！</span>
+                    </td>
                 </tr>
-                <tr style="border:none;">
-                    <td style="border:none; text-align:left; font-weight:bold;">11:20</td>
-                    <td style="border:none; text-align:left;">採点 / 手洗い・返却</td>
+                <tr>
+                    <td class="time-cell">9:50</td>
+                    <td>ボルダリング開始（約90分）<br>
+                        <span class="schedule-detail">早めに始められたらここの時間を長くします！</span>
+                    </td>
                 </tr>
-                <tr style="border:none;">
-                    <td style="border:none; text-align:left; font-weight:bold;">11:40</td>
-                    <td style="border:none; text-align:left;">結果発表</td>
+                <tr>
+                    <td class="time-cell">11:20</td>
+                    <td>採点 / 手洗い・レンタル品返却<br>
+                        <span class="schedule-detail">水道は3階のみ。階段が狭いため、大判手拭きシートをお使いください！</span>
+                    </td>
                 </tr>
-                <tr style="border:none;">
-                    <td style="border:none; text-align:left; font-weight:bold;">11:50</td>
-                    <td style="border:none; text-align:left;">退出</td>
+                <tr>
+                    <td class="time-cell">11:40</td>
+                    <td>結果発表（5分）</td>
+                </tr>
+                <tr>
+                    <td class="time-cell">11:45</td>
+                    <td>退出</td>
                 </tr>
             </table>
         </div>
 
-        <div class="section" style="margin-bottom:15px; padding:10px;">
-            <h2 style="font-size:12pt;">注意事項・安全管理</h2>
-            <p style="margin:5px 0;"><strong>■ 準備:</strong> 動きやすい長袖長ズボン推奨 / 爪は短く / 髪は結ぶ / アクセサリ外す / 靴下持参</p>
-            <p style="margin:5px 0;"><strong>■ 安全:</strong> マット上に座らない / 登っている人の下に入らない / 着地は膝で顔を打たないように注意</p>
-            <p style="margin:5px 0;"><strong>■ ルール:</strong> 10秒以内のフォールは2回まで即再トライ可 / フォール後は速やかに交代 / 「ナイスです！」「ナイストライ！」で応援
+        <div class="section back-page-section">
+            <h2 class="back-page-title">注意事項・安全管理</h2>
+            <p class="safety-text"><strong>■ 準備:</strong> 動きやすい長袖長ズボン推奨 / 爪は短く / 髪は結ぶ / アクセサリ外す / 靴下持参</p>
+            <p class="safety-text"><strong>■ 安全:</strong> マット上に座らない / 登っている人の下に入らない / 着地は膝で顔を打たないように注意</p>
+            <p class="safety-text"><strong>■ ルール:</strong> 10秒以内のフォールは2回まで即再トライ可 / フォール後は速やかに交代 / 「ナイスです！」「ナイストライ！」で応援
             </p>
         </div>
 
-        <div style="text-align: center; margin-top:10px; font-size: 9pt; color: #777;">
+        <div class="footer-section">
             <p>主催：X @tamachika11 / 協賛：バディトレ (Buddy Training)</p>
-            <p style="font-size: 9pt; color: #333; margin-top: 5px;">
-                通常練習は月に一回。今日のような特別練習は年に１、２回これからもやる予定です！<br>興味のある方は友近またはX（@tamachika11）でご連絡ください！！</p>
+            <p class="footer-note">
+                通常練習は月に一回。今日のような大会は年に１、２回これからもやる予定です！<br>興味のある方は友近またはX（@tamachika11）でご連絡ください！！</p>
         </div>
     </div>
 
     <!-- Flyer Space (Lower Half) -->
-    <div style="margin-top:20px; text-align:center;">
-        <img src="バディ_バナー.jpg" alt="バディトレ バナー"
-            style="max-width:100%; max-height:125mm; object-fit: contain; border: 1px solid #eee;">
+    <div class="flyer-container">
+        <img src="バディ_バナー.jpg" alt="バディトレ バナー" class="flyer-image">
     </div>
 
 </body>

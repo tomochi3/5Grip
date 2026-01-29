@@ -1,0 +1,380 @@
+@page {
+    size: A4;
+    margin: 6mm;
+}
+
+body {
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    width: 198mm;
+    margin: 0 auto;
+    color: #333;
+    font-size: 9.5pt;
+    line-height: 1.2;
+    zoom: 0.93;
+}
+
+.header {
+    text-align: center;
+    border-bottom: 2px solid #333;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+}
+
+h1 {
+    font-size: 15pt;
+    margin: 0 0 3px 0;
+}
+
+.meta-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 9pt;
+}
+
+.section {
+    margin-bottom: 5px;
+    border: 1px solid #999;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.section h2 {
+    margin-top: 0;
+    background: #eee;
+    padding: 2px 5px;
+    border-bottom: 1px solid #999;
+    font-size: 11pt;
+}
+
+.grid-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.col-half {
+    flex: 1;
+}
+
+/* Input areas */
+.input-group {
+    margin-bottom: 3px;
+    display: flex;
+    align-items: center;
+}
+
+.input-label {
+    width: 80px;
+    font-weight: bold;
+    font-size: 9pt;
+}
+
+.input-box {
+    border: 1px solid #333;
+    height: 22px;
+    flex: 1;
+    background: #fdfdfd;
+}
+
+.input-box.no-border {
+    border: none;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 3px;
+}
+
+th,
+td {
+    border: 1px solid #999;
+    padding: 2px 4px;
+    text-align: center;
+    font-size: 9pt;
+}
+
+th {
+    background: #f5f5f5;
+}
+
+td.bold {
+    font-weight: bold;
+}
+
+td.text-right {
+    text-align: right;
+}
+
+tr.total-row {
+    background: #f9f9f9;
+    font-weight: bold;
+}
+
+/* Column widths */
+th.col-grade {
+    width: 15%;
+}
+
+th.col-points {
+    width: 10%;
+}
+
+th.col-count {
+    width: 60%;
+}
+
+th.col-subtotal {
+    width: 15%;
+}
+
+/* Scoring Specifics */
+.score-check {
+    width: 14px;
+    height: 14px;
+    border: 1px solid #333;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 4px;
+}
+
+.nice-point-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 2px;
+    margin-top: 3px;
+}
+
+.nice-box {
+    border: 1px solid #333;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8pt;
+    color: #999;
+}
+
+.total-calculation {
+    font-size: 12pt;
+    font-weight: bold;
+    text-align: right;
+    padding: 5px;
+    background: #f9f9f9;
+    border: 2px solid #333;
+    margin-top: 5px;
+}
+
+.calc-row {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 2px;
+}
+
+.calc-row.large {
+    margin-top: 15px;
+    font-size: 18pt;
+}
+
+.calc-box {
+    border-bottom: 2px solid #333;
+    width: 80px;
+    display: inline-block;
+    text-align: center;
+    margin: 0 10px;
+    height: 30px;
+    line-height: 30px;
+}
+
+.calc-box.wide {
+    width: 120px;
+}
+
+.rules-summary {
+    font-size: 9pt;
+    color: #666;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+}
+
+.rules-summary ul {
+    margin: 5px 0;
+    padding-left: 20px;
+}
+
+/* Page 2 specific styles */
+.page-break {
+    page-break-before: always;
+    margin-top: 40px;
+    padding: 20px 0;
+    text-align: center;
+    border-top: 3px dashed #333;
+    border-bottom: 3px dashed #333;
+}
+
+.page-break-title {
+    font-size: 14pt;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #333;
+}
+
+.page-break-note {
+    font-size: 9pt;
+    color: #666;
+    margin: 5px 0;
+}
+
+.back-page-content {
+    font-size: 9pt;
+}
+
+.back-page-section {
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+.back-page-title {
+    font-size: 12pt;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 10pt;
+}
+
+/* Schedule table */
+.schedule-table {
+    width: 100%;
+    border: none;
+    font-size: 8.5pt;
+}
+
+.schedule-table tr {
+    border: none;
+}
+
+.schedule-table td {
+    border: none;
+    text-align: left;
+}
+
+.schedule-table .time-cell {
+    width: 60px;
+    font-weight: bold;
+    vertical-align: top;
+}
+
+.schedule-detail {
+    font-size: 8pt;
+    color: #666;
+}
+
+/* Safety section */
+.safety-text {
+    margin: 5px 0;
+}
+
+/* Footer section */
+.footer-section {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 9pt;
+    color: #777;
+}
+
+.footer-note {
+    font-size: 9pt;
+    color: #333;
+    margin-top: 5px;
+}
+
+/* Sponsor section */
+.sponsor-container {
+    text-align: center;
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #ddd;
+}
+
+.sponsor-label {
+    font-size: 8pt;
+    color: #999;
+    margin-bottom: 5px;
+}
+
+.sponsor-logo {
+    max-width: 100px;
+    height: auto;
+}
+
+/* Flyer section */
+.flyer-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.flyer-image {
+    max-width: 100%;
+    max-height: 125mm;
+    object-fit: contain;
+    border: 1px solid #eee;
+}
+
+/* Utility classes */
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.mt-5 {
+    margin-top: 5px;
+}
+
+.mt-10 {
+    margin-top: 10px;
+}
+
+.mt-15 {
+    margin-top: 15px;
+}
+
+.mb-5 {
+    margin-bottom: 5px;
+}
+
+.font-9pt {
+    font-size: 9pt;
+}
+
+.font-10pt {
+    font-size: 10pt;
+}
+
+.font-12pt {
+    font-size: 12pt;
+}
+
+.line-height-2 {
+    line-height: 2;
+}
+
+.margin-0 {
+    margin: 0;
+}
+
+.margin-5-0 {
+    margin: 5px 0;
+}
+
+@media print {
+    body {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}
