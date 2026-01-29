@@ -34,8 +34,12 @@ h1 {
 .section {
     margin-bottom: 5px;
     border: 1px solid #999;
-    padding: 5px;
+    padding: 3px;
     border-radius: 4px;
+}
+
+.section p {
+    margin: 2px 0;
 }
 
 .section h2 {
@@ -58,20 +62,20 @@ h1 {
 
 /* Input areas */
 .input-group {
-    margin-bottom: 3px;
+    margin-bottom: 10px;
     display: flex;
     align-items: center;
 }
 
 .input-label {
-    width: 80px;
+    width: 110px;
     font-weight: bold;
-    font-size: 9pt;
+    font-size: 11pt;
 }
 
 .input-box {
     border: 1px solid #333;
-    height: 22px;
+    height: 32px;
     flex: 1;
     background: #fdfdfd;
 }
@@ -229,6 +233,8 @@ th.col-subtotal {
 
 .back-page-content {
     font-size: 9pt;
+    page-break-before: always;
+    break-before: page;
 }
 
 .back-page-section {
@@ -249,7 +255,8 @@ th.col-subtotal {
 .schedule-table {
     width: 100%;
     border: none;
-    font-size: 8.5pt;
+    font-size: 12pt;
+    line-height: 1.4;
 }
 
 .schedule-table tr {
@@ -259,17 +266,21 @@ th.col-subtotal {
 .schedule-table td {
     border: none;
     text-align: left;
+    padding: 4px 0;
 }
 
 .schedule-table .time-cell {
-    width: 60px;
+    width: 70px;
     font-weight: bold;
     vertical-align: top;
+    font-size: 13pt;
 }
 
 .schedule-detail {
-    font-size: 8pt;
+    font-size: 11pt;
     color: #666;
+    display: block;
+    margin-top: 2px;
 }
 
 /* Safety section */
@@ -294,8 +305,8 @@ th.col-subtotal {
 /* Sponsor section */
 .sponsor-container {
     text-align: center;
-    margin-top: 15px;
-    padding-top: 10px;
+    margin-top: 5px;
+    padding-top: 3px;
     border-top: 1px solid #ddd;
 }
 
