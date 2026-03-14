@@ -1,0 +1,20 @@
+/* page-home.css — Home (index.html) specific styles */
+
+/* Access section (map + info) */
+.section-access .access-grid { display: grid; grid-template-columns: 1fr 360px; gap: 20px; align-items: start; }
+.section-access .map iframe { width: 100%; height: 280px; border: 0; border-radius: 8px; box-shadow: var(--shadow-sm); }
+.section-access .access-info .address { font-weight: 700; color: var(--text-main); }
+@media (max-width: 980px) { .section-access .access-grid { grid-template-columns: 1fr; } }
+
+/* Score sheet button (home only) */
+.btn-score-sheet {
+  display: inline-block; background: #4CAF50; color: #fff !important; text-decoration: none; padding: 8px 16px; border-radius: 4px;
+  font-size: 0.7em; margin-left: 15px; vertical-align: middle; border: none; box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  transition: background 0.3s ease, transform 0.2s ease;
+  -webkit-background-clip: border-box !important; -webkit-text-fill-color: #fff !important; background-clip: border-box !important;
+}
+.btn-score-sheet:hover { background: #45a049; transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); color: #fff !important; -webkit-text-fill-color: #fff !important; }
+
+/* Apply section (if used) */
+.section-apply iframe { width: 100%; height: 70vh; min-height: 560px; max-height: 900px; }
+@media (max-width: 640px) { .section-apply iframe { height: 80vh; min-height: 520px; } }
