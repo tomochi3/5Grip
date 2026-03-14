@@ -64,3 +64,9 @@
   .kv-grid { grid-template-columns: 1fr 1fr; }
   .event-hero h1 { font-size: 2.2rem; }
 }
+
+/* Access section */
+.section-access .access-grid { display: grid; grid-template-columns: 1fr; gap: 16px; align-items: start; }
+.section-access .map iframe { width: 100%; height: 280px; border: 0; border-radius: 8px; box-shadow: var(--shadow-sm); }
+.section-access .access-info .address { font-weight: 700; color: var(--text-main); }
+@media (min-width: 720px) { .section-access .access-grid { grid-template-columns: 1fr 360px; } }
