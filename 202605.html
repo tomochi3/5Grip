@@ -115,41 +115,53 @@
 			<!-- Scoring Rules -->
 			<section class="card" id="scoring-rules">
 				<h2>競技点のルール</h2>
-				<p class="muted" style="margin-top:-6px;">過剰な謙遜による自己申告のブレは上限で調整します。コース本数に上限はありません。</p>
-				<ul style="margin: 12px 0 18px; color: var(--text-main);">
-					<li><strong>共通:</strong> コース数の制限なし（登った本数分だけ得点化）</li>
+				<p class="muted" style="margin-top:-6px;">課題本数の上限はありません。自己申告のばらつき対策として、カテゴリごとに上限（スパイダーマン除く）を設定します。</p>
+
+				<ul style="margin:12px 0 18px; color: var(--text-main);">
+					<li><strong>同一課題の扱い:</strong> 最初の1回のみ加点（再登は0点）</li>
+					<li><strong>level:</strong> 難易度指標（数が大きいほど難しい）／例：level4=5級（赤）, level5=4級, level6=3級, level7=2級</li>
 				</ul>
-				<div class="overview-group">
-					<div class="overview-block">
-						<div class="overview-item">
-							<h3>初心者（上限 200点）</h3>
-							<p><strong>計算式:</strong> 20 × level</p>
-							<p class="muted">例）一番簡単な課題を多めに登ればほぼ満点。いくつか level2 を混ぜて埋めるイメージ。</p>
-						</div>
-					</div>
-					<div class="overview-block">
-						<div class="overview-item">
-							<h3>中級者（上限 250点）</h3>
-							<p><strong>計算式:</strong> 15 × level</p>
-							<p class="muted">例）level3 を4本登ると 45点 × 4 = 180点。level2 を3本程度登って残りを埋める想定。</p>
-						</div>
-					</div>
-					<div class="overview-block">
-						<div class="overview-item">
-							<h3>上級者（上限 300点）</h3>
-							<p><strong>計算式:</strong> 10 × level</p>
-							<p class="muted">例）level4 を5本で 40点 × 5 = 200点。level3 を4本登って残りを埋める想定。</p>
-						</div>
-					</div>
-					<div class="overview-block">
-						<div class="overview-item">
-							<h3>スパイダーマン（上限なし）</h3>
-							<p><strong>計算式:</strong> 10 × (level − 3)</p>
-							<p class="muted">例）level4（5級・赤）は 10点、level7（2級）は 40点。</p>
-						</div>
-					</div>
+
+				<table style="width:100%; border-collapse:collapse; font-size:0.95rem;">
+					<thead>
+						<tr>
+							<th style="text-align:left; border-bottom:1px solid var(--border); padding:8px;">カテゴリ</th>
+							<th style="text-align:left; border-bottom:1px solid var(--border); padding:8px;">計算式</th>
+							<th style="text-align:left; border-bottom:1px solid var(--border); padding:8px;">上限</th>
+							<th style="text-align:left; border-bottom:1px solid var(--border); padding:8px;">サンプル</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td style="padding:8px;">初心者</td>
+							<td style="padding:8px;">20 × level</td>
+							<td style="padding:8px;">200 点</td>
+							<td style="padding:8px;" class="muted">簡単な課題多め＋時々 level2 で埋める</td>
+						</tr>
+						<tr>
+							<td style="padding:8px;">中級者</td>
+							<td style="padding:8px;">15 × level</td>
+							<td style="padding:8px;">250 点</td>
+							<td style="padding:8px;" class="muted">level3×4=180、level2×3=90 → 合計270→上限250</td>
+						</tr>
+						<tr>
+							<td style="padding:8px;">上級者</td>
+							<td style="padding:8px;">10 × level</td>
+							<td style="padding:8px;">300 点</td>
+							<td style="padding:8px;" class="muted">level4×5=200、level3×4=180 → 上限適用</td>
+						</tr>
+						<tr>
+							<td style="padding:8px;">スパイダーマン</td>
+							<td style="padding:8px;">10 × (level − 3)</td>
+							<td style="padding:8px;">上限なし</td>
+							<td style="padding:8px;" class="muted">level4=10点 / level7=40点（level4以上を対象）</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<div class="muted" style="margin-top:10px;">
+					<strong>自己申告の目安:</strong> 初心者=5級未満中心 / 中級=5–4級中心 / 上級=3級以上安定 / スパイダーマン=2級以上量産可（当日運営で調整の可能性あり）
 				</div>
-				<p class="muted" style="margin-top: 12px;">※ level は課題のレベル（数字が大きいほど難しい）を指します。詳細な難易度テーブルは当日共有します。</p>
 			</section>
 
 			<!-- FAQ -->
