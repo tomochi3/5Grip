@@ -3,8 +3,11 @@
 /* Hero */
 .event-hero { text-align: center; padding: 60px 16px 36px; background: linear-gradient(180deg, #eff6ff 0%, #ffffff 100%); border-bottom: 1px solid var(--border); }
 .event-hero .event-badge { display: inline-block; padding: 6px 10px; font-size: 12px; font-weight: 700; color: #1d4ed8; background: #dbeafe; border: 1px solid #bfdbfe; border-radius: 999px; }
-.event-hero h1 { margin: 16px 0 8px; letter-spacing: 0.02em; -webkit-text-fill-color: initial; background: none; font-size: 2rem; }
+.event-hero h1 { margin: 16px 0 8px; letter-spacing: 0.02em; font-size: 2rem; background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 .event-hero .sub { color: var(--text-sub); max-width: 680px; margin: 0 auto; }
+
+.hero-image-wrap { margin: 24px auto 0; max-width: 720px; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-md); border: 4px solid #fff; }
+.hero-image { width: 100%; height: auto; display: block; object-fit: cover; aspect-ratio: 16/9; }
 
 /* Countdown */
 .countdown { display: grid; grid-auto-flow: column; gap: 12px; justify-content: center; align-items: end; margin-top: 18px; }
@@ -33,8 +36,8 @@
 
 /* Timeline */
 .timeline { list-style: none; padding: 0; margin: 0; counter-reset: step; }
-.timeline li { position: relative; padding-left: 64px; margin-bottom: 18px; }
-.timeline li::before { counter-increment: step; content: counter(step); position: absolute; left: 0; top: 0; width: 44px; height: 44px; background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; box-shadow: var(--shadow-md); }
+.timeline li { position: relative; padding-left: 50px; margin-bottom: 18px; }
+.timeline li::before { counter-increment: step; content: counter(step); position: absolute; left: 0; top: 0; width: 36px; height: 36px; background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; box-shadow: var(--shadow-md); font-size: 0.95rem; }
 .timeline strong { display: block; font-size: 1.05rem; margin-bottom: 8px; color: var(--text-main); }
 .timeline p { margin: 8px 0 0; color: var(--text-sub); }
 
@@ -53,9 +56,14 @@
 /* FAQ */
 .faq { display: grid; gap: 10px; }
 .faq-item { background: #fff; border: 1px solid var(--border); border-radius: 10px; }
-.faq-q { width: 100%; text-align: left; background: transparent; border: 0; padding: 14px 16px; font-weight: 700; color: var(--text-main); cursor: pointer; }
+.faq-q { width: 100%; text-align: left; background: transparent; border: 0; padding: 14px 16px; font-weight: 700; color: var(--text-main); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+.faq-icon { display: inline-block; width: 24px; height: 24px; position: relative; flex-shrink: 0; margin-left: 12px; }
+.faq-icon::before, .faq-icon::after { content: ''; position: absolute; background-color: var(--accent); top: 50%; left: 50%; transform: translate(-50%, -50%); transition: transform 0.3s ease; }
+.faq-icon::before { width: 14px; height: 2px; }
+.faq-icon::after { width: 2px; height: 14px; }
+.faq-item.open .faq-icon::after { transform: translate(-50%, -50%) rotate(90deg); opacity: 0; }
 .faq-a { display: none; padding: 0 16px 14px; color: var(--text-sub); }
-.faq-item.open .faq-a { display: block; }
+.faq-item.open .faq-a { display: block; animation: fadeInDown 0.3s ease-out; }
 
 /* Footer */
 .event-footer { text-align: center; color: var(--text-sub); padding: 40px 0; font-size: 12px; }
