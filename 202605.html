@@ -200,11 +200,24 @@
 		<!-- Scoring Rules -->
 		<section class="card" id="scoring-rules">
 			<h2>大会ルール（競技点）</h2>
-			<p class="muted" style="margin-top:-6px;">コース数に上限は設けません。自己申告のばらつき対策として、カテゴリごとに上限（スパイダーマン除く）を設定します。</p>
+			<div class="team-highlight">
+				<span class="team-highlight-icon">🧑🧑🧑</span>
+				<div>
+					<div class="team-highlight-num">３人 <span style="font-size:0.7em; font-weight:600;">で</span> 1チーム</div>
+					<div class="team-highlight-sub">ルール説明後にその場で各自相談・交渉して組んでもらいます</div>
+				</div>
+			</div>
 
 			<ul style="margin:12px 0 18px; color: var(--text-main);">
+				<li><strong>レギュレーション:</strong> ４つあるので、各自で自分がどれにするか選びます。</li>
+				<li><strong>得点上限について:</strong> 一人が何点取れるかは上限はありませんが、１つのレギュレーションにつき、それを選んだ人たちの合計得点の上限があります。<br>
+					<span class="muted" style="font-size: 0.9em; display: inline-block; margin-top: 4px;">
+						例：レギュレーション1000は1000点が上限。例えば20人がみんな100点ずつ取ったら、各自の点数は 1/2
+						(=1000/2000=レギュレーションの上限の点数/そのレギュレーションを選んだ人々の総得点) になってしまいます。
+					</span>
+				</li>
 				<li><strong>同一課題の扱い:</strong> 最初の1回のみ加点（再登は0点）</li>
-				<li><strong>level:</strong> 難易度指標（level1が一番簡単で、数が大きいほど難しい）／例：level1=8級, level2=7級, level3=6級,
+				<li><strong>levelとは:</strong> 難易度指標（level1が一番簡単で、数が大きいほど難しい）／例：level1=8級, level2=7級, level3=6級,
 					level4=5級, level5=4級, level6=3級, level7=2級</li>
 			</ul>
 
@@ -213,47 +226,38 @@
 					<tr>
 						<th
 							style="text-align:left; border-bottom:1px solid var(--border); padding:8px; white-space:nowrap;">
-							カテゴリ</th>
+							レギュレーション</th>
 						<th
 							style="text-align:left; border-bottom:1px solid var(--border); padding:8px; white-space:nowrap;">
 							計算式</th>
 						<th
 							style="text-align:left; border-bottom:1px solid var(--border); padding:8px; white-space:nowrap;">
-							上限</th>
-						<th style="text-align:left; border-bottom:1px solid var(--border); padding:8px;">目安・サンプル</th>
+							上限（全体）</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td style="padding:8px;">初心者</td>
-						<td style="padding:8px;">20 × level</td>
-						<td style="padding:8px;">200 点</td>
-						<td style="padding:8px;" class="muted">一番簡単なやつをやりまくればほぼ満点。数個level2で埋めてもらう</td>
+						<td style="padding:8px;">レギュレーション1000</td>
+						<td style="padding:8px;">何を登っても 5点</td>
+						<td style="padding:8px;">1000 点</td>
 					</tr>
 					<tr>
-						<td style="padding:8px;">中級者</td>
-						<td style="padding:8px;">15 × level</td>
-						<td style="padding:8px;">250 点</td>
-						<td style="padding:8px;" class="muted">level3を4個登れたら45点×4=180点。level2を3個登って残りを埋めれる</td>
+						<td style="padding:8px;">レギュレーション800</td>
+						<td style="padding:8px;">level × 5点</td>
+						<td style="padding:8px;">800 点</td>
 					</tr>
 					<tr>
-						<td style="padding:8px;">上級者</td>
-						<td style="padding:8px;">10 × level</td>
-						<td style="padding:8px;">300 点</td>
-						<td style="padding:8px;" class="muted">level4を5個登れたら40点×5=200点。level3を4個登って残りを埋めれる</td>
+						<td style="padding:8px;">レギュレーション1400</td>
+						<td style="padding:8px;">(level − 2) × 5点</td>
+						<td style="padding:8px;">1400 点</td>
 					</tr>
 					<tr>
-						<td style="padding:8px;">スパイダーマン</td>
-						<td style="padding:8px;">10 × (level − 3)</td>
-						<td style="padding:8px;">上限なし</td>
-						<td style="padding:8px;" class="muted">level4（5級、赤）を登っても10点。level7(2級)を登ると40点</td>
+						<td style="padding:8px;">レギュレーション1200</td>
+						<td style="padding:8px;">(level − 4) × 5点</td>
+						<td style="padding:8px;">1200 点</td>
 					</tr>
 				</tbody>
 			</table>
-
-			<div class="muted" style="margin-top:10px;">
-				<strong>自己申告の目安:</strong> 初心者=5級未満中心 / 中級=5–4級中心 / 上級=3級以上安定 / スパイダーマン=2級以上量産可
-			</div>
 		</section>
 
 		<!-- FAQ -->
