@@ -10,6 +10,17 @@
 	<link rel="stylesheet" href="css/layout.css" />
 	<link rel="stylesheet" href="css/component.css" />
 	<link rel="stylesheet" href="css/page-event.css" />
+	<style>
+		/* Scoring rules color cues */
+		.score-factor { color: #1a5fb4; font-weight: 600; }
+		.score-limit { color: #0a7a4f; font-weight: 600; }
+		.score-sum { color: #c45f00; font-weight: 600; }
+		.score-legend { font-size: 0.9rem; color: var(--text-sub); margin: 6px 0 0; }
+		.score-legend .dot { display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; vertical-align:middle; }
+		.score-legend .dot.factor { background:#1a5fb4; }
+		.score-legend .dot.limit { background:#0a7a4f; }
+		.score-legend .dot.sum { background:#c45f00; }
+	</style>
 </head>
 
 <body>
@@ -20,7 +31,7 @@
 			<p class="sub">朝の時間に、ゆるっと楽しく。未経験・お一人参加も歓迎のカジュアルなボルダリング交流イベントです。</p>
 
 			<div class="hero-image-wrap">
-				<img src="img/hero.png" alt="ボルダリングを楽しむ参加者たち" class="hero-image" width="800" height="450" />
+				<img src="img/prev.jpeg" alt="ボルダリングを楽しむ参加者たち" class="hero-image trim-top" width="800" height="450" onerror="this.onerror=null;this.src='img/hero.png';" />
 			</div>
 
 			<!-- Countdown -->
@@ -208,17 +219,25 @@
 				</div>
 			</div>
 
-			<ul style="margin:12px 0 18px; color: var(--text-main);">
-				<li><strong>レギュレーション:</strong> ４つあるので、各自で自分がどれにするか選びます。</li>
-				<li><strong>得点上限について:</strong> 一人が何点取れるかは上限はありませんが、１つのレギュレーションにつき、それを選んだ人たちの合計得点の上限があります。<br>
+			<!-- 要点と流れ -->
+			<ol style="margin:12px 0 14px; color: var(--text-main); font-size:0.95rem;">
+				<li>まず、自分の <strong>レギュレーション（得点方式）</strong> を4種類の中から <strong>1つだけ</strong> 選びます。</li>
+				<li>制限時間内は好きな課題に何本でも挑戦できます。<strong>同一課題は初回のみ得点</strong>（再登は0点）。</li>
+				<li>終了時に自分の合計得点を出します。</li>
+				<li>同じレギュレーションを選んだ <strong>全員の合計</strong> が上限を超えた場合は、<strong>係数を掛けて割合で調整</strong>（上限 ÷ 全員の合計）します。</li>
+			</ol>
+
+			<ul style="margin:8px 0 18px; color: var(--text-main);">
+				<li><strong>レギュレーション:</strong> 得点方式は4種類。<strong>当日ひとり1つを選択</strong>します。</li>
+				<li><strong>得点の調整:</strong> レギュレーションごとに <strong>全体の合計得点の上限</strong> があります。超えた場合、
+					<strong>係数＝上限 ÷（同レギュ選択者の合計得点）</strong> を各自の得点に掛けて <strong>割合で調整</strong> します。<br>
 					<span class="muted" style="font-size: 0.9em; display: inline-block; margin-top: 4px;">
-						例：レギュレーション1000は1000点が上限。例えば20人がみんな100点ずつ取ったら、各自の点数は 1/2
-						(=1000/2000=レギュレーションの上限の点数/そのレギュレーションを選んだ人々の総得点) になってしまいます。
+						例：レギュレーション1000で全員の合計が<span class="score-sum">2000</span>点 → 各自の得点は
+						<strong><span class="score-factor">0.5倍</span>(=<span class="score-limit">1000</span>/<span class="score-sum">2000</span>)</strong>。
 					</span>
 				</li>
-				<li><strong>同一課題の扱い:</strong> 最初の1回のみ加点（再登は0点）</li>
-				<li><strong>levelとは:</strong> 難易度指標（level1が一番簡単で、数が大きいほど難しい）／例：level1=8級, level2=7級, level3=6級,
-					level4=5級, level5=4級, level6=3級, level7=2級</li>
+				<li><strong>同一課題の扱い:</strong> <strong>最初の1回のみ加点</strong>（再登は0点）。</li>
+				<li><strong>level（レベル）とは:</strong> 難易度の目安。<strong>数が大きいほど難しい</strong>。目安：L1=8級, L2=7級, L3=6級, L4=5級, L5=4級, L6=3級, L7=2級。</li>
 			</ul>
 
 			<table style="width:100%; border-collapse:collapse; font-size:0.95rem;">
@@ -258,6 +277,167 @@
 					</tr>
 				</tbody>
 			</table>
+
+			<!-- 補足と計算例 -->
+			<div style="margin-top:10px; font-size:0.92rem; color: var(--text-sub);">
+				<p style="margin:6px 0;">
+					<strong>補足:</strong> 計算式の結果が <strong>0未満</strong> になる場合は <strong>0点扱い</strong>（例：<code>(level − 4) × 5</code> で level3 以下は0点）。
+				</p>
+				<ul style="margin:6px 0 0 18px;">
+					<li>レギュレーション1000: どのレベルでも <strong>1本=5点</strong>。10本で50点。</li>
+					<li>レギュレーション800: level5 を登ると <strong>25点</strong>、level2 は <strong>10点</strong>。</li>
+					<li>レギュレーション1400: level6 は <strong>(6−2)×5=20点</strong>、level2 は <strong>0点</strong>。</li>
+				</ul>
+			</div>
+
+			<!-- 具体例（30人・4レギュレーション） -->
+			<details style="margin-top:12px;">
+				<summary style="cursor:pointer; font-weight:600;">30人・4レギュレーションのスコア例（割合調整の仕組み）</summary>
+					<div style="margin-top:10px; font-size:0.92rem; color: var(--text-main);">
+					<p style="margin:0 0 8px;">参加者30名が4つのレギュレーションに分かれて得点した想定例です。<br>各レギュの合計が上限を超えると、<code>係数＝上限 ÷（同レギュ選択者の合計得点）</code> を全員に掛けて <strong>割合で調整</strong> します。</p>
+						<div class="score-legend">
+							<span class="dot limit"></span>上限 <span class="score-limit">例:1400</span>
+							/
+							<span class="dot sum"></span>合計点 <span class="score-sum">例:1520</span>
+							→
+							<span class="dot factor"></span>係数 <span class="score-factor">0.9211</span>
+						</div>
+
+					<table style="width:100%; border-collapse:collapse; font-size:0.9rem; margin:8px 0;">
+						<thead>
+							<tr>
+								<th style="text-align:left; border-bottom:1px solid var(--border); padding:6px;">レギュ</th>
+								<th style="text-align:right; border-bottom:1px solid var(--border); padding:6px;">人数</th>
+								<th style="text-align:right; border-bottom:1px solid var(--border); padding:6px;">合計点</th>
+								<th style="text-align:right; border-bottom:1px solid var(--border); padding:6px;">上限</th>
+								<th style="text-align:right; border-bottom:1px solid var(--border); padding:6px;">係数</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td style="padding:6px;">1000</td>
+								<td style="padding:6px; text-align:right;">8</td>
+								<td style="padding:6px; text-align:right;"><span class="score-sum">825</span></td>
+								<td style="padding:6px; text-align:right;"><span class="score-limit">1000</span></td>
+								<td style="padding:6px; text-align:right;"><span class="score-factor">1.000</span>（調整なし）</td>
+							</tr>
+							<tr>
+								<td style="padding:6px;">800</td>
+								<td style="padding:6px; text-align:right;">7</td>
+								<td style="padding:6px; text-align:right;"><span class="score-sum">1,160</span></td>
+								<td style="padding:6px; text-align:right;"><span class="score-limit">800</span></td>
+								<td style="padding:6px; text-align:right;"><span class="score-factor">0.6897</span>(=<span class="score-limit">800</span>/<span class="score-sum">1160</span>)</td>
+							</tr>
+							<tr>
+								<td style="padding:6px;">1400</td>
+								<td style="padding:6px; text-align:right;">8</td>
+								<td style="padding:6px; text-align:right;"><span class="score-sum">1,520</span></td>
+								<td style="padding:6px; text-align:right;"><span class="score-limit">1,400</span></td>
+								<td style="padding:6px; text-align:right;"><span class="score-factor">0.9211</span>(=<span class="score-limit">1400</span>/<span class="score-sum">1520</span>)</td>
+							</tr>
+							<tr>
+								<td style="padding:6px;">1200</td>
+								<td style="padding:6px; text-align:right;">7</td>
+								<td style="padding:6px; text-align:right;"><span class="score-sum">1,260</span></td>
+								<td style="padding:6px; text-align:right;"><span class="score-limit">1,200</span></td>
+								<td style="padding:6px; text-align:right;"><span class="score-factor">0.9524</span>(=<span class="score-limit">1200</span>/<span class="score-sum">1260</span>)</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:10px; margin-top:10px;">
+						<div style="border:1px solid var(--border); border-radius:8px; padding:10px;">
+							<strong>レギュ1000（調整なし）</strong>
+							<table style="width:100%; border-collapse:collapse; font-size:0.88rem; margin-top:6px;">
+								<thead>
+									<tr>
+										<th style="text-align:left; border-bottom:1px solid var(--border); padding:4px;">ID</th>
+										<th style="text-align:right; border-bottom:1px solid var(--border); padding:4px;">生</th>
+										<th style="text-align:right; border-bottom:1px solid var(--border); padding:4px;">最終</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr><td style="padding:4px;">A1</td><td style="padding:4px; text-align:right;">150</td><td style="padding:4px; text-align:right;">150</td></tr>
+									<tr><td style="padding:4px;">A2</td><td style="padding:4px; text-align:right;">140</td><td style="padding:4px; text-align:right;">140</td></tr>
+									<tr><td style="padding:4px;">A3</td><td style="padding:4px; text-align:right;">120</td><td style="padding:4px; text-align:right;">120</td></tr>
+									<tr><td style="padding:4px;">A4</td><td style="padding:4px; text-align:right;">100</td><td style="padding:4px; text-align:right;">100</td></tr>
+									<tr><td style="padding:4px;">A5</td><td style="padding:4px; text-align:right;">95</td><td style="padding:4px; text-align:right;">95</td></tr>
+									<tr><td style="padding:4px;">A6</td><td style="padding:4px; text-align:right;">85</td><td style="padding:4px; text-align:right;">85</td></tr>
+									<tr><td style="padding:4px;">A7</td><td style="padding:4px; text-align:right;">75</td><td style="padding:4px; text-align:right;">75</td></tr>
+									<tr><td style="padding:4px;">A8</td><td style="padding:4px; text-align:right;">60</td><td style="padding:4px; text-align:right;">60</td></tr>
+								</tbody>
+							</table>
+						</div>
+
+						<div style="border:1px solid var(--border); border-radius:8px; padding:10px;">
+							<strong>レギュ800（係数 <span class="score-factor">0.6897</span>(=<span class="score-limit">800</span>/<span class="score-sum">1160</span>)）</strong>
+							<table style="width:100%; border-collapse:collapse; font-size:0.88rem; margin-top:6px;">
+								<thead>
+									<tr>
+										<th style="text-align:left; border-bottom:1px solid var(--border); padding:4px;">ID</th>
+										<th style="text-align:right; border-bottom:1px solid var(--border); padding:4px;">生</th>
+										<th style="text-align:right; border-bottom:1px solid var(--border); padding:4px;">最終</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr><td style="padding:4px;">B1</td><td style="padding:4px; text-align:right;">210</td><td style="padding:4px; text-align:right;">144.8</td></tr>
+									<tr><td style="padding:4px;">B2</td><td style="padding:4px; text-align:right;">195</td><td style="padding:4px; text-align:right;">134.5</td></tr>
+									<tr><td style="padding:4px;">B3</td><td style="padding:4px; text-align:right;">180</td><td style="padding:4px; text-align:right;">124.1</td></tr>
+									<tr><td style="padding:4px;">B4</td><td style="padding:4px; text-align:right;">160</td><td style="padding:4px; text-align:right;">110.3</td></tr>
+									<tr><td style="padding:4px;">B5</td><td style="padding:4px; text-align:right;">150</td><td style="padding:4px; text-align:right;">103.4</td></tr>
+									<tr><td style="padding:4px;">B6</td><td style="padding:4px; text-align:right;">140</td><td style="padding:4px; text-align:right;">96.6</td></tr>
+									<tr><td style="padding:4px;">B7</td><td style="padding:4px; text-align:right;">125</td><td style="padding:4px; text-align:right;">86.2</td></tr>
+								</tbody>
+							</table>
+						</div>
+
+						<div style="border:1px solid var(--border); border-radius:8px; padding:10px;">
+							<strong>レギュ1400（係数 <span class="score-factor">0.9211</span>(=<span class="score-limit">1400</span>/<span class="score-sum">1520</span>)）</strong>
+							<table style="width:100%; border-collapse:collapse; font-size:0.88rem; margin-top:6px;">
+								<thead>
+									<tr>
+										<th style="text-align:left; border-bottom:1px solid var(--border); padding:4px;">ID</th>
+										<th style="text-align:right; border-bottom:1px solid var(--border); padding:4px;">生</th>
+										<th style="text-align:right; border-bottom:1px solid var(--border); padding:4px;">最終</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr><td style="padding:4px;">C1</td><td style="padding:4px; text-align:right;">260</td><td style="padding:4px; text-align:right;">239.5</td></tr>
+									<tr><td style="padding:4px;">C2</td><td style="padding:4px; text-align:right;">240</td><td style="padding:4px; text-align:right;">221.1</td></tr>
+									<tr><td style="padding:4px;">C3</td><td style="padding:4px; text-align:right;">220</td><td style="padding:4px; text-align:right;">202.6</td></tr>
+									<tr><td style="padding:4px;">C4</td><td style="padding:4px; text-align:right;">200</td><td style="padding:4px; text-align:right;">184.2</td></tr>
+									<tr><td style="padding:4px;">C5</td><td style="padding:4px; text-align:right;">180</td><td style="padding:4px; text-align:right;">165.8</td></tr>
+									<tr><td style="padding:4px;">C6</td><td style="padding:4px; text-align:right;">160</td><td style="padding:4px; text-align:right;">147.4</td></tr>
+									<tr><td style="padding:4px;">C7</td><td style="padding:4px; text-align:right;">140</td><td style="padding:4px; text-align:right;">128.9</td></tr>
+									<tr><td style="padding:4px;">C8</td><td style="padding:4px; text-align:right;">120</td><td style="padding:4px; text-align:right;">110.5</td></tr>
+								</tbody>
+							</table>
+						</div>
+
+						<div style="border:1px solid var(--border); border-radius:8px; padding:10px;">
+							<strong>レギュ1200（係数 <span class="score-factor">0.9524</span>(=<span class="score-limit">1200</span>/<span class="score-sum">1260</span>)）</strong>
+							<table style="width:100%; border-collapse:collapse; font-size:0.88rem; margin-top:6px;">
+								<thead>
+									<tr>
+										<th style="text-align:left; border-bottom:1px solid var(--border); padding:4px;">ID</th>
+										<th style="text-align:right; border-bottom:1px solid var(--border); padding:4px;">生</th>
+										<th style="text-align:right; border-bottom:1px solid var(--border); padding:4px;">最終</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr><td style="padding:4px;">D1</td><td style="padding:4px; text-align:right;">240</td><td style="padding:4px; text-align:right;">228.6</td></tr>
+									<tr><td style="padding:4px;">D2</td><td style="padding:4px; text-align:right;">220</td><td style="padding:4px; text-align:right;">209.5</td></tr>
+									<tr><td style="padding:4px;">D3</td><td style="padding:4px; text-align:right;">200</td><td style="padding:4px; text-align:right;">190.5</td></tr>
+									<tr><td style="padding:4px;">D4</td><td style="padding:4px; text-align:right;">180</td><td style="padding:4px; text-align:right;">171.4</td></tr>
+									<tr><td style="padding:4px;">D5</td><td style="padding:4px; text-align:right;">160</td><td style="padding:4px; text-align:right;">152.4</td></tr>
+									<tr><td style="padding:4px;">D6</td><td style="padding:4px; text-align:right;">140</td><td style="padding:4px; text-align:right;">133.3</td></tr>
+									<tr><td style="padding:4px;">D7</td><td style="padding:4px; text-align:right;">120</td><td style="padding:4px; text-align:right;">114.3</td></tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</details>
 		</section>
 
 		<!-- FAQ -->
